@@ -1,0 +1,50 @@
+.module-part-wrapper{
+    background: rgb(235,240,244);
+    min-height: 400px;
+    .config-wrapper{
+      
+        // line-height: 85px;
+        background: #fff;
+      
+        box-shadow: 1px 1px 5px 3px #ddd;
+        .config-area{
+            width:1200px;
+            height:85px;
+            padding:25px 0;
+            box-sizing: border-box;
+            margin:0 auto;
+           
+        }
+        .add-btn{
+            width:120px;
+            height:35px;
+            line-height: 35px;
+            color: #fff;
+            border-radius: 40px;
+            background: rgb(3,157,210);
+            float:left;
+        }
+        .login-out-area{
+            float:right;
+            .change-item{
+                display: inline-block;
+                width:35px;
+                height:35px;
+                border-radius: 50%;
+                border:1px solid rgb(234,234,234);
+                margin-right:10px;
+            }
+            .login-out-item{
+                width:100px;
+                height:35px;
+                display: inline-block;
+                line-height: 35px;
+                border:1px solid rgb(234,234,234);
+                border-radius: 40px;
+                vertical-align: top;
+                color:rgb(121,121,121);
+                font-size:14px;
+            }
+        }
+    }
+}
