@@ -5,6 +5,7 @@ import {Route,BrowserRouter as Router,Switch } from "react-router-dom"
 import './scss/App.css';
 import SelfHeader from './components/pc/selfHeder'
 import ModuleParts from './components/pc/modulePart'
+import PCAddModule from './components/pc/addModules'
 class App extends Component {
   render() {
     return (
@@ -15,7 +16,9 @@ class App extends Component {
           <Router>
             <Switch >
               <Route exact path="/" component={ModuleParts}></Route>
-              {/* <Route path="/details/:uniquekey" component={PCNewsDetails}></Route>
+              {/*添加*/}
+              <Route path="/addModule" component={PCAddModule}></Route>
+              {/*
               <Route path="/usercenter" component={PCUserCenter}></Route> */}
             </Switch >
           </Router>
