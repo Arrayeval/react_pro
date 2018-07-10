@@ -22,3 +22,21 @@ body {
 .vertical-top{
   vertical-align: top;
 }
+textarea::-webkit-input-placeholder,input::-webkit-input-placeholder{
+  font-size: 0.32rem;
+  color: #999999;
+  letter-spacing: 0;
+  opacity: .2;
+}
+textarea::-moz-placeholder,input::-moz-placeholder{ 
+  font-size: 0.32rem;
+  color: #999999;
+  letter-spacing: 0;
+  opacity: .2;
+}
+textarea:-ms-input-placeholder,input:-ms-input-placeholder{
+  font-size: 0.32rem;
+  color: #999999;
+  letter-spacing: 0; 
+  opacity: .2;
+}

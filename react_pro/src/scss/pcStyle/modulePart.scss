@@ -53,6 +53,7 @@
         width:1200px;
         margin: 0 auto;
         padding-top:34px;
+        box-sizing: content-box;
         height:40px;
         .btn{
             width: 90px;
@@ -79,6 +80,7 @@
         margin:0 auto;
         display: flex;
         justify-content:space-around;
+        justify-items: center;
         margin-top:20px;
         .module-part{
             width:300px;
