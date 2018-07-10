@@ -40,3 +40,9 @@ textarea:-ms-input-placeholder,input:-ms-input-placeholder{
   letter-spacing: 0; 
   opacity: .2;
 }
+button{
+  cursor: pointer;
+}
+input,textarea{
+  border:1px solid rgba(203,203,203,0.5);
+}

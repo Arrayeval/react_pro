@@ -21,6 +21,7 @@
         text-align: left;
         .item-form{
             margin-bottom:20px;
+            display: flex;
             .self-lebal{
                 font-size:16px;
                 display: inline-block;
@@ -31,7 +32,7 @@
                 }
             }
             .self-input{
-                border:1px solid rgb(203,203,203);
+                border:1px solid rgba(203,203,203,0.5);
                 height:30px;
                 padding:5px;
                 width:250px;
@@ -43,17 +44,36 @@
                 height:80px;
                 padding:5px;
                 font-size:14px;
-                border:1px solid rgb(203,203,203);
+                border:1px solid rgba(203,203,203,0.5);
                 border-radius: 4px;
                 
             }
             .add-btn{
                 display: inline-block;
-                width:35px;
-                height:35px;
-                background: url(../../assets/add.svg) no-repeat;
-                background-size:cover;
-                background-color:#f3eded
+                flex: 1;
+                
+                // width:35px;
+                // height:35px;
+                // background: url(../../assets/add.svg) no-repeat;
+                // background-size:cover;
+                // background-color:#f3eded
+            }
+            .actionBtn{
+                width: 90px;
+                height: 32px;
+                line-height: 32px;
+                border-radius: 20px;
+                outline: none;
+                border: 1px solid #ddd;
+                box-shadow: 1px 1px 4px 2px #ddd;
+                margin-left: 92px;
+                background: #fff;
+              
+                &.cancelBtn{
+                    background: #ddd;
+                    color:#fff;
+                    box-shadow: 1px 1px 4px 2px #dad1d1;
+                }
             }
         }
     }
