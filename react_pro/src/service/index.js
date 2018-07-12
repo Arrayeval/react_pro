@@ -20,5 +20,5 @@ axios.interceptors.response.use(res => {
 }, err => {
   return Promise.reject(err)
 })
-
+// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
 export default axios

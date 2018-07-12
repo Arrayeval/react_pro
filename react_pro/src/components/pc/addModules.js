@@ -11,16 +11,16 @@ class addModules extends Component {
     constructor(props){
         super(props)
         this.state= {
-            title:'',       // 标题
-            shortDes:'',    // 简述
-            creator:'',     // 创建者
-            createTime:''   // 创建人
+            lag_title:'',       // 标题
+            short_des:'',    // 简述
+            author_name:'',     // 创建者
+            time_date:''   // 创建
             
         }
     };
     // 设置时间
     onChange (date, dateString) {
-        this.setState({createTime:dateString})
+        this.setState({time_date:dateString})
     }
     handelVal (event) {
         let _name = event.target.name
@@ -48,11 +48,11 @@ class addModules extends Component {
             <div className="module-form">
              <div className="item-form">
                 <label className="self-lebal">模块名：</label>
-                <input type="text" placeholder="请输入文章标题" className="self-input" name="title" value={this.state.title}  onChange={this.handelVal.bind(this)}/>
+                <input type="text" placeholder="请输入文章标题" className="self-input" name="lag_title" value={this.state.lag_title}  onChange={this.handelVal.bind(this)}/>
              </div>
              <div className="item-form"> 
                 <label className="self-lebal textarea-lebal">简单描述：</label>
-                <textarea type="text" placeholder="随便写写这模块是干什么的..." className="self-textarea" name="shortDes" value={this.state.shortDes} onChange={this.handelVal.bind(this)}></textarea>
+                <textarea type="text" placeholder="随便写写这模块是干什么的..." className="self-textarea" name="short_des" value={this.state.short_des} onChange={this.handelVal.bind(this)}></textarea>
              </div>
              <div className="item-form">
                 <label className="self-lebal">创建时间：</label>
@@ -64,7 +64,7 @@ class addModules extends Component {
              </div>
              <div className="item-form">
                 <label className="self-lebal">创建作者：</label>
-                <input type="text" placeholder="我们需要一个作者" className="self-input" name="creator" value={this.state.creator} onChange={this.handelVal.bind(this)}/>
+                <input type="text" placeholder="我们需要一个作者" className="self-input" name="author_name" value={this.state.author_name} onChange={this.handelVal.bind(this)}/>
              </div>
              <div className="item-form">
                 <label className="self-lebal">模块logo：</label>

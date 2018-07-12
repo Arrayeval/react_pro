@@ -15,6 +15,10 @@
     this.props.history.push({pathname:'addModule',state:{...this.state}})
   }
 
+  /*添加文章*/
+  addArticle () {
+    this.props.history.push({pathname:'addArticle',state:{...this.state}})
+  } 
    render () {
     return (
       <div className="module-part-wrapper">
@@ -42,7 +46,7 @@
               {/* <img /> */}
             </div>
             <div className="action-area">
-              <span className="item">添加</span>
+              <span className="item" onClick={this.addArticle.bind(this)}>添加</span>
               <span className="item">编辑</span>
             </div>
           </div>
