@@ -6,6 +6,7 @@ import './scss/App.css';
 import SelfHeader from './components/pc/selfHeder'
 import ModuleParts from './components/pc/modulePart'
 import PCAddModule from './components/pc/addModules'
+import AddArticle from './components/pc/addArticle'
 class App extends Component {
   render() {
     return (
@@ -16,10 +17,10 @@ class App extends Component {
           <Router>
             <Switch >
               <Route exact path="/" component={ModuleParts}></Route>
-              {/*添加*/}
+              {/*添加模块*/}
               <Route path="/addModule" component={PCAddModule}></Route>
-              {/*
-              <Route path="/usercenter" component={PCUserCenter}></Route> */}
+              {/*添加文章*/}
+              <Route path="/addArticle" component={AddArticle}></Route>
             </Switch >
           </Router>
         </MediaQuery>
