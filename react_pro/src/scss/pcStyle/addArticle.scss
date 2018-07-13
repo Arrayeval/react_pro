@@ -1,0 +1,49 @@
+.add-article-part{
+  width:1200px;
+  min-height:200px;
+  margin:0 auto;
+  .add-item{
+    display: flex;
+    justify-content: center;
+    margin-bottom:20px;
+    .item-lag{
+      flex: 0 0 200px;
+      text-align: right;
+      font-weight: 600;
+    }
+    .item-area{
+      flex:1;
+      text-align: left;
+      &.editor-box{
+       border: 1px solid rgba(203, 203, 203, 0.5);
+      }
+      .item-input{
+        width: 350px;
+        height:30px;
+        border: 1px solid rgba(203, 203, 203, 0.5);
+        border-radius: 3px;
+        padding:4px;
+      }
+    }
+    .btn-wrapper{
+      margin-top: 20px;
+      .actionBtn{
+          width: 90px;
+          height: 32px;
+          line-height: 32px;
+          border-radius: 20px;
+          outline: none;
+          border: 1px solid #ddd;
+          box-shadow: 1px 1px 4px 2px #ddd;
+          margin-left: 92px;
+          background: #fff;
+          &.cancelBtn{
+              background: #019ed3;;
+              color:#fff;
+              box-shadow: 1px 1px 4px 2px #dad1d1;
+          }
+        }
+    }
+ 
+  }
+}

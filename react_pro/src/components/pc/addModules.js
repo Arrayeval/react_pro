@@ -19,7 +19,7 @@ class addModules extends Component {
         }
     };
     // 设置时间
-    onChange (date, dateString) {
+    onChangeTime (date, dateString) {
         this.setState({time_date:dateString})
     }
     handelVal (event) {
@@ -59,7 +59,7 @@ class addModules extends Component {
                 {/* <input type="text" placeholder="请输入文章标题" className="self-input"/> */}
                 <DatePicker 
                     format="YYYY-MM-DD HH:mm:ss"
-                    onChange={this.onChange.bind(this)}
+                    onChange={this.onChangeTime.bind(this)}
                     placeholder="创建时间..."/>
              </div>
              <div className="item-form">
