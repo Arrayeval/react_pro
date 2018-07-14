@@ -9,8 +9,11 @@ class addArticle extends Component {
     constructor(props){
         super(props)
         this.state = {
+          title:'',  
           content: "",
-          
+          module:'',
+          author:'',
+          createTime:''
         }
     };
 
@@ -34,22 +37,23 @@ class addArticle extends Component {
     // 选择模块 
     handleChangeModule(value) {
       console.log(`selected ${value}`);
+      this.setState({module:value})
     }
 
     // 编辑文章内容
     handleChangeContent = (content) => {
-      console.log(content)
+      this.setState({content})
     }
     
-    handleRawChange = (rawContent) => {
-      console.log(rawContent)
+    handleRawChange = (content) => {
+      this.setState({content})
     }
 
     initEditior () {
       return {
         height: 400,
         contentFormat: 'html',
-        initialContent: '<p>请输入文章内容...</p>',
+        initialContent: '<p>请输入文章内容（注意内容格式）...</p>',
         onChange: this.handleChangeContent,
         onRawChange: this.handleRawChange
       }
@@ -57,12 +61,24 @@ class addArticle extends Component {
 
     // 选择创建时间
     handleChangeTime = (date, dateString) => {
-      this.setState({time_date:dateString})
+      this.setState({createTime:dateString})
     }
   
     // 重置，返回
     goBack = ()=> {
       this.props.history.push({pathname:'/',state:{...this.state}})
+    }
+    
+    // 取值
+    handelVal (event) {
+      let _name = event.target.name
+      let _obj = {};
+      _obj[_name] = event.target.value
+      this.setState({..._obj});
+    }
+
+    handelData () {
+      console.log(this.state)
     }
 
     render () {
@@ -72,7 +88,7 @@ class addArticle extends Component {
           <div style={{paddingTop:'100px'}}>
             <div className="add-article-part">
               <div className="add-item">
-                <p className="item-lag">选择文章所属模块：</p>
+                <p className="item-lag">文章所属模块：</p>
                 <div className="item-area">
                   {this.initSelect()}
                 </div>
@@ -80,11 +96,11 @@ class addArticle extends Component {
               <div className="add-item">
                 <p className="item-lag">添加文章标题：</p>
                 <div className="item-area">
-                  <input className="item-input"/>
+                  <input className="item-input"  name="title" onChange={this.handelVal.bind(this)}/>
                 </div>
                 <p className="item-lag">文章作者：</p>
                 <div className="item-area">
-                  <input className="item-input"/>
+                  <input className="item-input" name="author" onChange={this.handelVal.bind(this)}/>
                 </div>
               </div>
               <div className="add-item">
@@ -104,8 +120,8 @@ class addArticle extends Component {
               </div>
               <div className="add-item">
                 <div className="btn-wrapper">
-                  <button className="actionBtn">提交</button>
-                  <button className="actionBtn cancelBtn"  onClick={this.goBack}>重置</button>
+                  <button className="actionBtn" onClick={this.handelData.bind(this)}>提交</button>
+                  <button className="actionBtn cancelBtn"  onClick={this.goBack.bind(this)}>重置</button>
                 </div>
               </div>
             </div>
