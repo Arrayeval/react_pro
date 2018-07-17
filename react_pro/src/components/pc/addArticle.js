@@ -2,6 +2,7 @@ import React ,{Component} from 'react'
 import BraftEditor from 'braft-editor'
 import 'braft-editor/dist/braft.css'
 import '../../scss/pcStyle/addArticle.scss'
+import articles from '../../service/article'
 import { Select, DatePicker} from 'antd'
 import Divider from 'antd/lib/divider';
 const Option = Select.Option
@@ -25,7 +26,7 @@ class addArticle extends Component {
     // 初始化模块选择框
     initSelect () {
       return <div>
-          <Select defaultValue="lucy" style={{ width: 120 }} onChange={this.handleChangeModule}>
+          <Select defaultValue="lucy" style={{ width: 120 }} onChange={this.handleChangeModule.bind(this)}>
           <Option value="jack">Jack</Option>
           <Option value="lucy">Lucy</Option>
           <Option value="disabled" disabled>Disabled</Option>
@@ -78,7 +79,12 @@ class addArticle extends Component {
     }
 
     handelData () {
-      console.log(this.state)
+      this.setState({content: JSON.stringify(this.state.content)})
+      articles.addArticle(this.state).then((res)=>{
+        console.log(res);
+      }).catch(err=>{
+        console.log(err)
+      })
     }
 
     render () {
