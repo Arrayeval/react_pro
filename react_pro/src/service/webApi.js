@@ -4,6 +4,9 @@ const urlList ={
   tabs:{
     addTabs: mangageBase +'tabs/addTabs/',
     getTabs: mangageBase +'tabs/',
+  },
+  articles:{
+    addArticle: mangageBase +'article/addArticle/',
   }
 }
 
