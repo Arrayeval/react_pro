@@ -7,6 +7,7 @@ import SelfHeader from './components/pc/selfHeder'
 import ModuleParts from './components/pc/modulePart'
 import PCAddModule from './components/pc/addModules'
 import AddArticle from './components/pc/addArticle'
+import ArticleList from './components/pc/articleList'
 class App extends Component {
   render() {
     return (
@@ -21,6 +22,8 @@ class App extends Component {
               <Route path="/addModule" component={PCAddModule}></Route>
               {/*添加文章*/}
               <Route path="/addArticle" component={AddArticle}></Route>
+              {/*文章列表*/}
+              <Route path="/articleList" component={ArticleList}></Route>
             </Switch >
           </Router>
         </MediaQuery>

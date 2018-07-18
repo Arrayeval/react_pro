@@ -32,7 +32,9 @@ class addModules extends Component {
     dealData () {
         let _state = this.state
         tabs.addTabs({..._state}).then((res)=>{
-            console.log(res)
+            if(res.data.code === 0) {
+                this.props.history.push({pathname:'/'})
+            }
         }).catch(err=>{
             console.log(err)
         });
