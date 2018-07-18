@@ -1,10 +1,11 @@
 import React ,{Component} from 'react'
 import BraftEditor from 'braft-editor'
+// https://npm.taobao.org/package/braft-editor
 import 'braft-editor/dist/braft.css'
 import '../../scss/pcStyle/addArticle.scss'
 import articles from '../../service/article'
 import { Select, DatePicker} from 'antd'
-import Divider from 'antd/lib/divider';
+// import Divider from 'antd/lib/divider';
 const Option = Select.Option
 class addArticle extends Component {
     constructor(props){
@@ -12,7 +13,7 @@ class addArticle extends Component {
         this.state = {
           title:'',  
           content: "",
-          module:'',
+          module:'lucy',
           author:'',
           createTime:''
         }
@@ -20,7 +21,8 @@ class addArticle extends Component {
 
     // 生命周期函数
     componentDidMount () {
-      // this.initEditor()
+      //this.BraftEditor.setContent(`<h1>eee</h1>`)
+      // this.refs.BraftEditor.setContent()
     };
     
     // 初始化模块选择框
@@ -37,17 +39,7 @@ class addArticle extends Component {
     
     // 选择模块 
     handleChangeModule(value) {
-      console.log(`selected ${value}`);
       this.setState({module:value})
-    }
-
-    // 编辑文章内容
-    handleChangeContent = (content) => {
-      this.setState({content})
-    }
-    
-    handleRawChange = (content) => {
-      this.setState({content})
     }
 
     initEditior () {
@@ -55,8 +47,8 @@ class addArticle extends Component {
         height: 400,
         contentFormat: 'html',
         initialContent: '<p>请输入文章内容（注意内容格式）...</p>',
-        onChange: this.handleChangeContent,
-        onRawChange: this.handleRawChange
+       // onChange: this.handleChangeContent,
+       // onRawChange: this.handleRawChange
       }
     }
 
@@ -79,9 +71,11 @@ class addArticle extends Component {
     }
 
     handelData () {
-      this.setState({content: JSON.stringify(this.state.content)})
+      this.setState({content: this.refs.BraftEditor.getContent()})
       articles.addArticle(this.state).then((res)=>{
-        console.log(res);
+        if (res.data.code === 0) {
+          this.props.history.push({pathname:'articleList'})
+        }
       }).catch(err=>{
         console.log(err)
       })
@@ -112,7 +106,8 @@ class addArticle extends Component {
               <div className="add-item">
                 <p className="item-lag">添加文章内容：</p>
                 <div className="item-area editor-box">
-                  <BraftEditor {...editorProps}/>
+                  {/* ref={instance  => this.BraftEditor = instance } */}
+                  <BraftEditor ref="BraftEditor"  {...editorProps}/>
                 </div>
               </div>
               <div className="add-item">
