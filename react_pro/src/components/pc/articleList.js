@@ -57,7 +57,6 @@ class  articleList extends Component {
                 </td>
                 <td>
                   {/* http://react-china.org/latest */}
-
                 </td>
               </tr>
             </tbody>

@@ -1,1 +1,10 @@
 scss配置；https://www.cnblogs.com/yangrenmu/p/7118398.html
+
+
+<App>
+	<p>1</p>
+	<p>2</p>
+</App>
+表示的是组件嵌套的子元素：
+React.Children.map(this.props.children,child => <li>{child}</li>)
+这一点与vue 不同，vue使用的是solt插槽

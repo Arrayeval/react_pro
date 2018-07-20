@@ -5,5 +5,9 @@ import './scss/reset.scss'
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App >
+  {/* <p>1</p>
+  <p>2</p>
+  <p>3</p> */}
+</App>, document.getElementById('root'));
 registerServiceWorker();

@@ -2,6 +2,7 @@ import React ,{Component} from 'react'
 
 import '../../scss/pcStyle/addModules.scss'
 import {Route,BrowserRouter as Router,Switch,Link } from "react-router-dom"
+import PropTypes from 'prop-types'
 import detail from '../../components/pc/detail'
 import { DatePicker} from 'antd'
 import PicturesWall from '../../base/picturesWall.js'
@@ -15,7 +16,6 @@ class addModules extends Component {
             short_des:'',    // 简述
             author_name:'',     // 创建者
             time_date:''   // 创建
-            
         }
     };
     // 设置时间
@@ -40,12 +40,12 @@ class addModules extends Component {
         });
         console.log(this.state)
     }
-
     render () {
         return (
             <div className="add-module-wrapper">
             <p className="route-wrapper">
               <Link to='/' className="back-btn" tag="button">back</Link>
+              {this.props.module}
             </p>
             <div className="module-form">
              <div className="item-form">
@@ -90,13 +90,24 @@ class addModules extends Component {
     } 
 }
 
+// 用于限制组件props参数类型
+addModules.propTypes = {
+    module: PropTypes.string
+}
+addModules.defaultProps = {
+    module:''
+}
+
 export default addModules;
-// const addModules = ({match}) => 
-//          (
-//             <div className="add-module-wrapper">
-//                 添加模块了
-//                 {/* <Route path="/ee" component={detail}></Route> */}
-//                 <Route path={`${match.url}/ees`} component={detail}></Route>
-//             </div>
-//         )
-// export default addModules;
+// 直接定义一个对象，承接组件
+/*
+const addModules = ({match}) => 
+         (
+            <div className="add-module-wrapper">
+                添加模块了
+                 <Route path="/ee" component={detail}></Route> 
+                <Route path={`${match.url}/ees`} component={detail}></Route>
+            </div>
+        )
+export default addModules;
+*/
