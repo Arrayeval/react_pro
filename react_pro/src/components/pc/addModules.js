@@ -7,17 +7,21 @@ import detail from '../../components/pc/detail'
 import { DatePicker} from 'antd'
 import PicturesWall from '../../base/picturesWall.js'
 import tabs from '../../service/tab'
+import uploadFun from '../../service/upload'
+import Item from '../../../node_modules/antd/lib/list/Item';
 const { MonthPicker, RangePicker, WeekPicker } = DatePicker
 class addModules extends Component {
     constructor(props){
         super(props)
         this.state= {
             lag_title:'',       // 标题
-            short_des:'',    // 简述
+            short_des:'',       // 简述
             author_name:'',     // 创建者
-            time_date:''   // 创建
+            time_date:'',       // 创建时间
+            fileData: []  
         }
     };
+    
     // 设置时间
     onChangeTime (date, dateString) {
         this.setState({time_date:dateString})
@@ -28,6 +32,7 @@ class addModules extends Component {
         _obj[_name] = event.target.value
         this.setState({..._obj});
     }
+
     // 数据提交
     dealData () {
         let _state = this.state
@@ -40,7 +45,40 @@ class addModules extends Component {
         });
         console.log(this.state)
     }
+
+    // 上传logo[子组件的回调]
+    handleFile (data) { // 处理img
+        if (data.length >=1) {
+          let _fileArr =  data.map((item,index)=>{
+                return {
+                    name: item.name,
+                    thumbUrl: item.thumbUrl,
+                    type: item.type,
+                    uid: item.uid
+                }
+            })
+            this.setState({fileData: _fileArr})
+        }
+    }
+
+    // 获取模块信息
+    getTabsInfo (tabID) {
+        tabs.getTabInfo({id: tabID}).then(res => {
+            console.log(res)
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+     
+    componentWillMount () {
+       if (this.props.location.state && this.props.location.state.tabID !==undefined) {
+        this.getTabsInfo.bind(this)(this.props.location.state.tabID)
+       }
+    }
+
     render () {
+        var fileUploadUrl = uploadFun.uploadMutliImg()
+        const fileCount = 1;
         return (
             <div className="add-module-wrapper">
             <p className="route-wrapper">
@@ -71,7 +109,7 @@ class addModules extends Component {
              <div className="item-form">
                 <label className="self-lebal">模块logo：</label>
                 <div className="add-btn vertical-top">
-                    <PicturesWall/>
+                    <PicturesWall handleFile = {this.handleFile.bind(this)} actionUrl = {fileUploadUrl} fileCount={fileCount}/>
                 </div>
                 {/* <input type="text" placeholder="请输入文章标题" className="self-input"/> */}
              </div>
@@ -99,13 +137,15 @@ addModules.defaultProps = {
 }
 
 export default addModules;
+
+
 // 直接定义一个对象，承接组件
 /*
 const addModules = ({match}) => 
-         (
+        (
             <div className="add-module-wrapper">
                 添加模块了
-                 <Route path="/ee" component={detail}></Route> 
+                    <Route path="/ee" component={detail}></Route> 
                 <Route path={`${match.url}/ees`} component={detail}></Route>
             </div>
         )

@@ -15,11 +15,10 @@ class App extends Component {
          {/* {React.Children.map(this.props.children,child=> <li>{child}</li>)} 
               类似于vue的slot
               详情参见：http://www.ruanyifeng.com/blog/2015/03/react.html */}
-
         {this.props.children}
         {/* pc端 */}
         <MediaQuery query="(min-device-width: 1200px)">
-          {/* <SelfHeader/> */}
+          <SelfHeader/>
           <Router>
             <Switch >
               <Route exact path="/" component={ModuleParts}></Route>
