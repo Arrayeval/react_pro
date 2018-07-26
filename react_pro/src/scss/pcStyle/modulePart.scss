@@ -79,8 +79,8 @@
         width:1200px;
         margin:0 auto;
         display: flex;
-        justify-content:space-around;
-        justify-items: center;
+        justify-content:left;
+        flex-wrap:wrap;
         margin-top:20px;
         .module-part{
             width:300px;
@@ -91,9 +91,14 @@
             box-sizing: border-box;
             background: #fff;
             box-shadow: 2px 2px 3px 3px #eaf0f6;
+            margin:0 150px 20px 0;
             transition: all .3s;
+           
             &:hover{
                 box-shadow: 1px 2px 7px 7px #ddd;
+            }
+            &:nth-child(3n){
+                margin-right:0;
             }
             .title{
                 padding: 0 20px;
