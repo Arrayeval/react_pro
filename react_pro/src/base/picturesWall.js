@@ -35,7 +35,16 @@ class PicturesWall extends Component {
   }
 
   render() {
-    const { previewVisible, previewImage, fileList } = this.state;
+    const { previewVisible, previewImage } = this.state;
+    var fileList = [];
+    if (this.props.fileList) {
+    //  fileList.push({
+    //    uid: this.props.fileList.uid,
+    //    name: this.props.fileList.name,
+    //    status: 'done',
+    //    url: this.props.fileList.path,
+    //  })
+    }
     var uploadButton = (
       <div>
         <Icon type="plus" />

@@ -8,7 +8,26 @@ import ModuleParts from './components/pc/modulePart'
 import PCAddModule from './components/pc/addModules'
 import AddArticle from './components/pc/addArticle'
 import ArticleList from './components/pc/articleList'
+
+import PropTypes from 'prop-types';
 class App extends Component {
+  // 申明组件全局变量
+  static childContextTypes ={
+    themeColor: PropTypes.string
+  }
+  constructor () {
+    super()
+    this.state={
+      themeColor:'red'
+    }
+  }
+  // 组件全局变量赋值
+  getChildContext () {
+    return {
+      themeColor: this.state.themeColor
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -18,7 +37,7 @@ class App extends Component {
         {this.props.children}
         {/* pc端 */}
         <MediaQuery query="(min-device-width: 1200px)">
-          <SelfHeader/>
+          {/* <SelfHeader/> */}
           <Router>
             <Switch >
               <Route exact path="/" component={ModuleParts}></Route>

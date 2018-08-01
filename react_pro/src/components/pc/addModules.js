@@ -5,20 +5,31 @@ import {Route,BrowserRouter as Router,Switch,Link } from "react-router-dom"
 import PropTypes from 'prop-types'
 import detail from '../../components/pc/detail'
 import { DatePicker} from 'antd'
+import moment from 'moment';
 import PicturesWall from '../../base/picturesWall.js'
 import tabs from '../../service/tab'
 import uploadFun from '../../service/upload'
 import Item from '../../../node_modules/antd/lib/list/Item';
 const { MonthPicker, RangePicker, WeekPicker } = DatePicker
 class addModules extends Component {
+    // 引入themeColor
+    static contextTypes ={
+        themeColor: PropTypes.string
+    }
+
     constructor(props){
         super(props)
         this.state= {
             lag_title:'',       // 标题
             short_des:'',       // 简述
             author_name:'',     // 创建者
-            time_date:'',       // 创建时间
-            fileData: []  
+            time_date:'2015/01/01',       // 创建时间
+            file_data: [{
+                uid: -1,
+                name: 'xxx.png',
+                status: 'done',
+                url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+            } ]  
         }
     };
     
@@ -38,6 +49,7 @@ class addModules extends Component {
         let _state = this.state
         tabs.addTabs({..._state}).then((res)=>{
             if(res.data.code === 0) {
+                // 回到模块首页
                 this.props.history.push({pathname:'/'})
             }
         }).catch(err=>{
@@ -52,19 +64,29 @@ class addModules extends Component {
           let _fileArr =  data.map((item,index)=>{
                 return {
                     name: item.name,
-                    thumbUrl: item.thumbUrl,
+                    // thumbUrl: item.thumbUrl, // 文件的二进制编码
                     type: item.type,
                     uid: item.uid
                 }
             })
-            this.setState({fileData: _fileArr})
+            this.setState({file_data: _fileArr})
         }
     }
 
     // 获取模块信息
     getTabsInfo (tabID) {
         tabs.getTabInfo({id: tabID}).then(res => {
-            console.log(res)
+           if (res.data.code === 0) {
+               console.log(res.data.data[0].logo_info)
+               this.setState({lag_title:res.data.data[0].lag_title})
+               this.setState({short_des:res.data.data[0].short_des})
+               this.setState({author_name:res.data.data[0].author_name})
+               this.setState({time_date:res.data.data[0].time_date})
+               var _tmp = []
+               _tmp.push(res.data.data[0].logo_info)
+               this.setState({ file_data: _tmp})
+               console.log(this.state)
+           }
         }).catch(err => {
             console.log(err)
         })
@@ -87,7 +109,7 @@ class addModules extends Component {
             </p>
             <div className="module-form">
              <div className="item-form">
-                <label className="self-lebal">模块名：</label>
+                <label className="self-lebal" style={{color:this.context.themeColor}}>模块名：</label>
                 <input type="text" placeholder="请输入文章标题" className="self-input" name="lag_title" value={this.state.lag_title}  onChange={this.handelVal.bind(this)}/>
              </div>
              <div className="item-form"> 
@@ -98,7 +120,8 @@ class addModules extends Component {
                 <label className="self-lebal">创建时间：</label>
                 {/* <input type="text" placeholder="请输入文章标题" className="self-input"/> */}
                 <DatePicker 
-                    format="YYYY-MM-DD HH:mm:ss"
+                    format="YYYY-MM-DD"
+                    defaultValue={moment(this.state.time_date, "YYYY-MM-DD")}
                     onChange={this.onChangeTime.bind(this)}
                     placeholder="创建时间..."/>
              </div>
@@ -109,7 +132,7 @@ class addModules extends Component {
              <div className="item-form">
                 <label className="self-lebal">模块logo：</label>
                 <div className="add-btn vertical-top">
-                    <PicturesWall handleFile = {this.handleFile.bind(this)} actionUrl = {fileUploadUrl} fileCount={fileCount}/>
+                    <PicturesWall handleFile = {this.handleFile.bind(this)} actionUrl = {fileUploadUrl} fileList={this.state.file_data}  fileCount={fileCount}/>
                 </div>
                 {/* <input type="text" placeholder="请输入文章标题" className="self-input"/> */}
              </div>

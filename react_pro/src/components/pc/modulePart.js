@@ -52,7 +52,7 @@
             <span className="module-name"> {item.lag_title}</span> 
           </p>
           <div className="content-icon"> 
-            {/* <img /> */}
+            <img className="tab-logo" src={item.logo_info.path}/>
           </div>
           <div className="action-area">
             <span className="item" onClick={this.addArticle.bind(this)}>添加</span>
