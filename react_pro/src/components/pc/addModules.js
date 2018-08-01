@@ -24,12 +24,14 @@ class addModules extends Component {
             short_des:'',       // 简述
             author_name:'',     // 创建者
             time_date:'2015/01/01',       // 创建时间
-            file_data: [{
+            file_data:[]
+           /* file_data: [{
                 uid: -1,
                 name: 'xxx.png',
                 status: 'done',
                 url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
             } ]  
+            */
         }
     };
     
@@ -37,6 +39,7 @@ class addModules extends Component {
     onChangeTime (date, dateString) {
         this.setState({time_date:dateString})
     }
+
     handelVal (event) {
         let _name = event.target.name
         let _obj = {};
@@ -50,12 +53,16 @@ class addModules extends Component {
         tabs.addTabs({..._state}).then((res)=>{
             if(res.data.code === 0) {
                 // 回到模块首页
-                this.props.history.push({pathname:'/'})
+              this.props.history.push({pathname:'/'})
             }
         }).catch(err=>{
             console.log(err)
         });
         console.log(this.state)
+    }
+
+    goBack () {
+        this.props.history.push({pathname:'/'})
     }
 
     // 上传logo[子组件的回调]
@@ -69,21 +76,21 @@ class addModules extends Component {
                     uid: item.uid
                 }
             })
-            this.setState({file_data: _fileArr})
+          return  this.setState({file_data: _fileArr})
         }
+        return this.setState({file_data: []})
     }
 
     // 获取模块信息
     getTabsInfo (tabID) {
         tabs.getTabInfo({id: tabID}).then(res => {
            if (res.data.code === 0) {
-               console.log(res.data.data[0].logo_info)
                this.setState({lag_title:res.data.data[0].lag_title})
                this.setState({short_des:res.data.data[0].short_des})
                this.setState({author_name:res.data.data[0].author_name})
                this.setState({time_date:res.data.data[0].time_date})
                var _tmp = []
-               _tmp.push(res.data.data[0].logo_info)
+               _tmp.push(res.data.data[0].file_data)
                this.setState({ file_data: _tmp})
                console.log(this.state)
            }
@@ -94,7 +101,8 @@ class addModules extends Component {
      
     componentWillMount () {
        if (this.props.location.state && this.props.location.state.tabID !==undefined) {
-        this.getTabsInfo.bind(this)(this.props.location.state.tabID)
+            this.setState({item_id: this.props.location.state.tabID})
+            this.getTabsInfo.bind(this)(this.props.location.state.tabID)
        }
     }
 
@@ -138,7 +146,7 @@ class addModules extends Component {
              </div>
              <div className="item-form">
                <button className="actionBtn" onClick={this.dealData.bind(this)}>提交</button>
-               <button className="actionBtn cancelBtn" onClick={this.dealData.bind(this)}>重置</button>
+               <button className="actionBtn cancelBtn" onClick={this.goBack.bind(this)}>重置</button>
              </div>
             </div>
                 {/* 
@@ -155,12 +163,12 @@ class addModules extends Component {
 addModules.propTypes = {
     module: PropTypes.string
 }
+
 addModules.defaultProps = {
     module:''
 }
 
 export default addModules;
-
 
 // 直接定义一个对象，承接组件
 /*
