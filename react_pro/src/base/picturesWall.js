@@ -7,7 +7,7 @@ class PicturesWall extends Component {
     this.state=  {
       previewVisible: false,
       previewImage: '',
-      fileList: [],
+     // fileList: [],
       /*
       fileList: [{
         uid: -1,
@@ -28,6 +28,7 @@ class PicturesWall extends Component {
     });
   }
 
+  // 图片资源的改变
   handleChange = ({ fileList }) => {
     this.setState({ fileList })
     // 回调父组件方法
@@ -36,15 +37,7 @@ class PicturesWall extends Component {
 
   render() {
     const { previewVisible, previewImage } = this.state;
-    var fileList = [];
-    if (this.props.fileList) {
-    //  fileList.push({
-    //    uid: this.props.fileList.uid,
-    //    name: this.props.fileList.name,
-    //    status: 'done',
-    //    url: this.props.fileList.path,
-    //  })
-    }
+    var fileList  = this.props.fileList
     var uploadButton = (
       <div>
         <Icon type="plus" />

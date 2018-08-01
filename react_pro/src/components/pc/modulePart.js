@@ -33,7 +33,6 @@
     tabs.getTabs().then((res) => {
       if (res.status === 200) {
         this.setState({tabsArr: res.data})
-        console.log(this.state.tabsArr)
       }
     }).catch(err => {
       console.log(err)
@@ -52,7 +51,7 @@
             <span className="module-name"> {item.lag_title}</span> 
           </p>
           <div className="content-icon"> 
-            <img className="tab-logo" src={item.logo_info.path}/>
+            <img className="tab-logo" src={item.file_data.url}/>
           </div>
           <div className="action-area">
             <span className="item" onClick={this.addArticle.bind(this)}>添加</span>
