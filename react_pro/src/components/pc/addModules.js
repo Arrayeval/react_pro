@@ -16,14 +16,13 @@ class addModules extends Component {
     static contextTypes ={
         themeColor: PropTypes.string
     }
-
     constructor(props){
         super(props)
         this.state= {
             lag_title:'',       // 标题
             short_des:'',       // 简述
             author_name:'',     // 创建者
-            time_date:'2015/01/01',       // 创建时间
+            time_date:'2019-5-5',       // 创建时间
             file_data:[]
            /* file_data: [{
                 uid: -1,
@@ -89,10 +88,11 @@ class addModules extends Component {
                this.setState({short_des:res.data.data[0].short_des})
                this.setState({author_name:res.data.data[0].author_name})
                this.setState({time_date:res.data.data[0].time_date})
-               var _tmp = []
-               _tmp.push(res.data.data[0].file_data)
-               this.setState({ file_data: _tmp})
-               console.log(this.state)
+               if (res.data.data[0].file_data !== '') {
+                var _tmp = []
+                _tmp.push(res.data.data[0].file_data)
+                this.setState({file_data: _tmp})
+               }
            }
         }).catch(err => {
             console.log(err)

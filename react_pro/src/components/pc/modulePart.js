@@ -51,7 +51,7 @@
             <span className="module-name"> {item.lag_title}</span> 
           </p>
           <div className="content-icon"> 
-            <img className="tab-logo" src={item.file_data.url}/>
+            <img className="tab-logo" src={item.file_data.url? item.file_data.url: 'https://avatars0.githubusercontent.com/u/26053763?s=400&v=4' } />
           </div>
           <div className="action-area">
             <span className="item" onClick={this.addArticle.bind(this)}>添加</span>

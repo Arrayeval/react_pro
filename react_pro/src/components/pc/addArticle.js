@@ -13,7 +13,7 @@ class addArticle extends Component {
         this.state = {
           title:'',  
           content: "",
-          module:'lucy',
+          type:'lucy',
           author:'',
           createTime:''
         }
@@ -39,7 +39,7 @@ class addArticle extends Component {
     
     // 选择模块 
     handleChangeModule(value) {
-      this.setState({module:value})
+      this.setState({type:value})
     }
 
     initEditior () {
