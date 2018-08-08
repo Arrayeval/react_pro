@@ -58,7 +58,6 @@
             <span className="item" onClick={this.editTabs.bind(this,item.item_id)}>编辑</span>
           </div>
         </div>
-      
     ))
     return (
       <div className="module-part-wrapper">

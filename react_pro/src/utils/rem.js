@@ -11,7 +11,7 @@
       docEl.style.fontSize = '100px'
     } else {
       // 便于计算，应该取设计稿宽度375
-      docEl.style.fontSize = 100 * (clientWidth / 750) + 'px'
+      docEl.style.fontSize = 100 * (clientWidth / 375) + 'px'
     }
   }
   if (!doc.addEventListener) {
