@@ -1,0 +1,18 @@
+@mixin postion-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%)
+}
+
+@function px2rem($val) {
+  @return #{$val*2/100}rem;
+}
+
+@function px2vwh($val,$flag) {
+  @if $flag == 'h' {
+      @return #{$val /667*100}vh;
+  } @else if $flag == 'w' {
+      @return #{$val /375*100}vw;
+  }
+}

@@ -126,7 +126,6 @@ class addArticle extends Component {
                 </div>
               </div>
             </div>
-            
           </div>
         )
     } 
