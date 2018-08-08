@@ -22,7 +22,7 @@ class addModules extends Component {
             lag_title:'',       // 标题
             short_des:'',       // 简述
             author_name:'',     // 创建者
-            time_date:'2019-5-5',       // 创建时间
+            time_date: null,       // 创建时间
             file_data:[]
            /* file_data: [{
                 uid: -1,
@@ -107,6 +107,7 @@ class addModules extends Component {
     }
 
     render () {
+        const {time_date} = this.state
         var fileUploadUrl = uploadFun.uploadMutliImg()
         const fileCount = 1;
         return (
@@ -129,7 +130,7 @@ class addModules extends Component {
                 {/* <input type="text" placeholder="请输入文章标题" className="self-input"/> */}
                 <DatePicker 
                     format="YYYY-MM-DD"
-                    defaultValue={moment(this.state.time_date, "YYYY-MM-DD")}
+                    value= {moment(this.state.time_date, "YYYY-MM-DD")}
                     onChange={this.onChangeTime.bind(this)}
                     placeholder="创建时间..."/>
              </div>

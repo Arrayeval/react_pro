@@ -1,12 +1,13 @@
 import React ,{Component} from 'react'
 import { Select} from 'antd'
-import '../../scss/pcStyle/articleList.scss'
+import article from '../../service/article'
 
+import '../../scss/pcStyle/articleList.scss'
 class  articleList extends Component {
   constructor(props) {
     super(props)
     this.state ={
-
+      articleArr: []
     }
   };
   // 初始化模块选择框
@@ -26,13 +27,29 @@ class  articleList extends Component {
     console.log(value)
   }
 
+  // 获取文章列表数据
+  getArticleList () {
+    article.getArticleList().then(res => {
+      if(res.data.code === 0 ) {
+        this.setState({articleArr: res.data.data})
+      }
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
+  componentWillMount () {
+    this.getArticleList()
+  }
+
   render () {
     const initSelect = this.initSelect()
+    console.log(this.state.articleArr)
     return (
       <div className="article-list-box">
         <section className="classify-item">
          {initSelect}
-         <span className="new-last">最新</span>
+         <span className="new-last">最新 </span>
          <span className="classify-hover-btn">最新</span>
         </section>
         <section className="self-part">
