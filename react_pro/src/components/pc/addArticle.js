@@ -130,5 +130,4 @@ class addArticle extends Component {
         )
     } 
 }
-
 export default addArticle;
