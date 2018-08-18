@@ -15,6 +15,7 @@ class addArticle extends Component {
           content: "",
           type:'lucy',
           author:'',
+          shortDes:'',
           createTime:''
         }
     };
@@ -39,7 +40,7 @@ class addArticle extends Component {
     
     // 选择模块 
     handleChangeModule(value) {
-      this.setState({type:value})
+      this.setState({type:value+ ''})
     }
 
     initEditior () {
@@ -101,6 +102,12 @@ class addArticle extends Component {
                 <p className="item-lag">文章作者：</p>
                 <div className="item-area">
                   <input className="item-input" name="author" onChange={this.handelVal.bind(this)}/>
+                </div>
+              </div>
+              <div className="add-item">
+                <p className="item-lag">文章简述：</p>
+                <div className="item-area">
+                  <textarea className="item-textarea" name="shortDes" onChange={this.handelVal.bind(this)} ></textarea>
                 </div>
               </div>
               <div className="add-item">
