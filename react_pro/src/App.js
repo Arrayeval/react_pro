@@ -8,6 +8,7 @@ import ModuleParts from './components/pc/modulePart'
 import PCAddModule from './components/pc/addModules'
 import AddArticle from './components/pc/addArticle'
 import ArticleList from './components/pc/articleList'
+import ReduxUse from './base/reduxUse'
 
 import PropTypes from 'prop-types';
 class App extends Component {
@@ -47,6 +48,8 @@ class App extends Component {
               <Route path="/addArticle" component={AddArticle}></Route>
               {/*文章列表*/}
               <Route path="/articleList" component={ArticleList}></Route>
+              {/*redux的使用*/}
+              <Route path="/reduxUse" component={ReduxUse}></Route>
             </Switch >
           </Router>
         </MediaQuery>

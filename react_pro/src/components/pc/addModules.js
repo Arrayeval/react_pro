@@ -23,7 +23,7 @@ class addModules extends Component {
             short_des:'',       // 简述
             author_name:'',     // 创建者
             time_date: null,       // 创建时间
-            file_data:[]
+            file_data:[],
            /* file_data: [{
                 uid: -1,
                 name: 'xxx.png',
@@ -33,7 +33,7 @@ class addModules extends Component {
             */
         }
     };
-    
+
     // 设置时间
     onChangeTime (date, dateString) {
         this.setState({time_date:dateString})
