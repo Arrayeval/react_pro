@@ -1,11 +1,11 @@
-function mapSatte(state) {
+export const increase = () => {
   return {
-    value: state.count
-  }
-}
+      type: "increase"
+  };
+};
 
-function mapDispatchToProps(dispatch) {
+export const decrease = () => {
   return {
-    onIncreaseClick: () => dispatch(increaseAction)
-  }
-}
+      type: "decrease"
+  };
+};
