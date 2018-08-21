@@ -9,6 +9,7 @@ import PCAddModule from './components/pc/addModules'
 import AddArticle from './components/pc/addArticle'
 import ArticleList from './components/pc/articleList'
 import ReduxUse from './base/reduxUse'
+import ReduxUse2 from './base/reduxUse2'
 
 import PropTypes from 'prop-types';
 class App extends Component {
@@ -38,7 +39,7 @@ class App extends Component {
         {this.props.children}
         {/* pc端 */}
         <MediaQuery query="(min-device-width: 1200px)">
-          <SelfHeader/>
+          {/* <SelfHeader/> */}
           <Router>
             <Switch >
               <Route exact path="/" component={ModuleParts}></Route>
@@ -50,6 +51,7 @@ class App extends Component {
               <Route path="/articleList" component={ArticleList}></Route>
               {/*redux的使用*/}
               <Route path="/reduxUse" component={ReduxUse}></Route>
+              <Route path="/reduxUse2" component={ReduxUse2}></Route>
             </Switch >
           </Router>
         </MediaQuery>

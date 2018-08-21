@@ -2,7 +2,7 @@
 import React ,{Component} from 'react'
 import store from '../redux/store'
 import * as Action from '../redux/action'
-class RedexUse extends Component {
+class RedexUse2 extends Component {
   constructor(props) {
     super(props)
     // this.state = {
@@ -41,4 +41,4 @@ class RedexUse extends Component {
     )
   }
 }
-export default RedexUse
+export default RedexUse2

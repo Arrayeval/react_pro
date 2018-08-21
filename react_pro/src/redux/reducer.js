@@ -1,13 +1,35 @@
 // Reducer
 import * as ActionTypes from './actionType'
-export default (state = 33, action) => {
-  // const count = state.count
+const initialState = {
+  cart: [
+    {
+      product: 'bread 700g',
+      quantity: 2,
+      unitCost: 90
+    },
+    {
+      product: 'milk 500ml',
+      quantity: 1,
+      unitCost: 47
+    }
+  ]
+}
+export default (state, action) => {
+  state = {...initialState}
   switch (action.type) {
     case ActionTypes.INCREMENT:
-      return state + 1
+      state.cart[0].quantity = state.cart[0].quantity + action.preload.quantity
+      console.log('state', state)
+      return {
+        ...state,
+      }
     case ActionTypes.DECREMENT:
-      return state - 1
+      // return state - 1
+      state.cart[0].quantity = state.cart[0].quantity - action.preload.quantity
+      console.log('state', state)
+      return {...state}
     default:
+      // return state
       return state
   }
 }
