@@ -8,3 +8,11 @@ scss配置；https://www.cnblogs.com/yangrenmu/p/7118398.html
 表示的是组件嵌套的子元素：
 React.Children.map(this.props.children,child => <li>{child}</li>)
 这一点与vue 不同，vue使用的是solt插槽
+
+react学习：
+1）https://segmentfault.com/a/1190000009684957
+2）http://huziketang.mangojuice.top/books/react/lesson30
+
+redux: 
+1）http://www.redux.org.cn/docs/introduction/Examples.html
+2）http://huziketang.mangojuice.top/books/react/lesson30
