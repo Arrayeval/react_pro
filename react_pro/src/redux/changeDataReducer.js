@@ -1,37 +1,21 @@
 // Reducer
 import * as ActionTypes from './actionType'
+import {tmpData} from './data.js'
 const initialState = {
-  cart: [
-    {
-      product: 'bread 700g',
-      quantity: 2,
-      unitCost: 90
-    },
-    {
-      product: 'milk 500ml',
-      quantity: 1,
-      unitCost: 47
-    }
-  ]
+  ...tmpData
 }
-export default (state, action) => {
-  state = {...initialState}
+const changeDataReducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.INCREMENT:
       state.cart[0].quantity = state.cart[0].quantity + action.preload.quantity
-      console.log('state', state)
       return {
         ...state,
       }
     case ActionTypes.DECREMENT:
-      // return state - 1
       state.cart[0].quantity = state.cart[0].quantity - action.preload.quantity
-      console.log('state', state)
       return {...state}
     default:
-      // return state
       return state
   }
 }
-
-// module.exports = counter
+export default changeDataReducer;
