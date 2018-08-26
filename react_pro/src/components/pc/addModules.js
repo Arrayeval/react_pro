@@ -22,7 +22,7 @@ class addModules extends Component {
             lag_title:'',       // 标题
             short_des:'',       // 简述
             author_name:'',     // 创建者
-            time_date: null,       // 创建时间
+            time_date: new Date(),       // 创建时间
             file_data:[],
            /* file_data: [{
                 uid: -1,

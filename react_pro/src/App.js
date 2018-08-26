@@ -8,6 +8,7 @@ import ModuleParts from './components/pc/modulePart'
 import PCAddModule from './components/pc/addModules'
 import AddArticle from './components/pc/addArticle'
 import ArticleList from './components/pc/articleList'
+import ArticleDetail from './components/pc/articleDetail'
 import ReduxUse from './base/reduxUse'
 import ReduxUse2 from './base/reduxUse2'
 
@@ -52,6 +53,8 @@ class App extends Component {
                 <Route path="/addArticle" component={AddArticle}></Route>
                 {/*文章列表*/}
                 <Route path="/articleList" component={ArticleList}></Route>
+                {/*文章内容详情*/}
+                <Route path="/articleDetail" component={ArticleDetail}></Route>
                 {/*redux的使用*/}
                 <Route path="/reduxUse" component={ReduxUse}></Route>
                 <Route path="/reduxUse2" component={ReduxUse2}></Route>

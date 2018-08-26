@@ -1,4 +1,5 @@
 import React ,{Component} from 'react'
+import {Link } from "react-router-dom"
 import { Select} from 'antd'
 import article from '../../service/article'
 import {typeList} from '../../modles/congfig'
@@ -51,12 +52,17 @@ class  articleList extends Component {
 
   createHtml (articleArr) {
     if (articleArr.length <= 0){
-      return 
+      return <tr className="no-data">
+        <td colSpan="5">
+          <div className= "img-wrapper"><img  alt="nodata" src={require('../../assets/no-data.svg')}/></div>
+        </td>
+      </tr>
     } else {
       return articleArr.map((item,index)=>(
        <tr key={index}>
         <td>
-          <a className="link-top-line">{item.title}</a>
+          <Link to={`articleDetail/ee/22`} className="link-top-line">{item.title}</Link>
+          {/* <a className="link-top-line">{item.title}</a> */}
           <div className="content-des">
            {item.shortDes}
           </div>

@@ -51,6 +51,12 @@
         tr{
           width:100%;
           border-bottom:1px solid #ddd;
+          &.no-data{
+            border-bottom: none;
+            .img-wrapper{
+              text-align: center;
+            }
+          }
         }
         tr td {
           text-align: center;
@@ -62,12 +68,17 @@
           }
           .type-item-lag{
             display: inline-block;
-            width:30px;
-            height:30px;
-            margin-right:5px;
+            width: 34px;
+            height: 34px;
+            margin-right: 5px;
             line-height: 25px;
             border-radius: 50%;
             background: #ddd;
+            vertical-align: top;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 2px;
             &.item-name{
               color:#e99494
             }
