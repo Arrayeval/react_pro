@@ -13,3 +13,18 @@ export const tmpData = {
     }
   ]
 }
+
+export const tmpData2 = {
+  cart: [
+    {
+      product: 'bread 700g',
+      quantity: 20,
+      unitCost: 90
+    },
+    {
+      product: 'milk 500ml',
+      quantity: 100,
+      unitCost: 47
+    }
+  ]
+}
