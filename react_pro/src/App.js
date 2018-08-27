@@ -43,7 +43,7 @@ class App extends Component {
           {this.props.children}
           {/* pc端 */}
           <MediaQuery query="(min-device-width: 1200px)">
-            <SelfHeader/>
+            {/* <SelfHeader/> */}
             <Router>
               <Switch >
                 <Route exact path="/" component={ModuleParts}></Route>

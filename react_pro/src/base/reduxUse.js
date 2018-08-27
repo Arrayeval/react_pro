@@ -7,34 +7,29 @@ import {Link } from "react-router-dom"
 class RedexUse extends Component {
   constructor(props) {
     super(props)
-    // this.state = {
-    //   count:  store.getState()
-    // }
   }
-   // redux fun
-   onIncrement = () => {
-      store.dispatch({
-        ...Action.increase(),
-        preload: {quantity:2}
-      })
-    }
-
-    onDecrement = () => {
-      store.dispatch({
-        ...Action.decrease(),
-        preload: {quantity:3}
-      })
-    }
+  // redux fun
+  onIncrement = () => {
+    store.dispatch({
+      ...Action.increase(),
+      preload: {quantity:2}
+    })
+  }
+  onDecrement = () => {
+    store.dispatch({
+      ...Action.decrease(),
+      preload: {quantity:3}
+    })
+  }
   render() {
     store.subscribe(() => {
-      console.log("subscribe 检测到数据变化了", store.getState())
-      // this.setState({count: store.getState()})
+      console.log("reduxUse中subscribe 检测到数据变化了", store.getState())
     })
-    console.log("this.props.temData", this.props.temData)
+    // console.log("this.props.temData", this.props.temData)
     return (
       <div style={{paddingTop:'200px'}}>
-         {/* <h1 className="text-center mt-5">{store.getState()}</h1> */}
-         <Link to='/reduxUse2' className="clearfix">ToRoute2</Link>
+         <h1 className="text-center mt-5">{JSON.stringify(store.getState())}</h1>
+         <Link to='/reduxUse2' className="clearfix">点击一下 go ToRoute2</Link>
          <button className="btn btn-primary mr-2" onClick={this.onIncrement.bind(this)}>
             Increase
           </button>

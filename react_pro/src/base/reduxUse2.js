@@ -8,9 +8,6 @@ import {Link } from "react-router-dom"
 class RedexUse2 extends Component {
   constructor(props) {
     super(props)
-    // this.state = {
-    //   count:  store.getState()
-    // }
   }
    // redux fun
    onIncrement = () => {
@@ -28,14 +25,13 @@ class RedexUse2 extends Component {
     }
   render() {
     store.subscribe(() => {
-      console.log("subscribe 检测到数据变化了", store.getState())
-      // this.setState({count: store.getState()})
+      console.log("reduxUse2中subscribe 检测到数据变化了", store.getState())
     })
     console.log("this.props.temDate", this.props.temData)
     return (
       <div style={{paddingTop:'200px'}}>
-         {/* <h1 className="text-center mt-5">{store.getState()}</h1> */}
-         <Link to='/reduxUse' className="clearfix">ToReduxUse</Link>
+         <h1 className="text-center mt-5">{JSON.stringify(store.getState())}</h1>
+         <Link to='/reduxUse' className="clearfix">点击一下 go ToReduxUse</Link>
          <button className="btn btn-primary mr-2" onClick={this.onIncrement.bind(this)}>
             Increase
           </button>
