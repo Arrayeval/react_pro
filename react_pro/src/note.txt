@@ -11,7 +11,7 @@ React.Children.map(this.props.children,child => <li>{child}</li>)
 
 react学习：
 1）https://segmentfault.com/a/1190000009684957
-2）http://huziketang.mangojuice.top/books/react/lesson30
+2）http://huziketang.mangojuice.top/books/react/lesson30 【快速入门】
 
 redux: 
 1）http://www.redux.org.cn/docs/introduction/Examples.html
