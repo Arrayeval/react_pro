@@ -150,7 +150,7 @@ class addModules extends Component {
                <button className="actionBtn cancelBtn" onClick={this.goBack.bind(this)}>重置</button>
              </div>
             </div>
-                {/* 
+                {/*  使用链接跳转路由的实现方式
                 <Link to={`${this.props.match.url}/ee/22`} className="clearfix">detailBtn</Link>
                 <Route exact path={`${this.props.match.url}`} component={detail}></Route>
                 <Route path={`${this.props.match.url}/ee/:id`} component={detail}></Route>

@@ -40,7 +40,7 @@ class App extends Component {
           {/* {React.Children.map(this.props.children,child=> <li>{child}</li>)} 
                 类似于vue的slot
                 详情参见：http://www.ruanyifeng.com/blog/2015/03/react.html */}
-          {this.props.children}
+          {this.props.children} {/*组件内部的东西*/}
           {/* pc端 */}
           <MediaQuery query="(min-device-width: 1200px)">
             {/* <SelfHeader/> */}

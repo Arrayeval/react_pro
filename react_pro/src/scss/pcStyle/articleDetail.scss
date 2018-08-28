@@ -1,0 +1,30 @@
+.article-detail-wrapper{
+  width:1200px;
+  min-height:200px;
+  margin:0 auto;
+  .article-main-box{
+    display: flex;
+    // .left-progress{
+    //   position: fixed;
+    //   left: 100px;
+    //   display: flex;
+    //   flex-direction: column;
+    //   .progress-item{
+
+    //   }
+    // }
+    .article-content{
+      flex: 1;
+      .article-title{
+        font-size: 24px;
+      }
+      .article-word{
+        word-break: break-all;
+      }
+    }
+    .right-aside-wrapper{
+      flex: 0 0 400px;
+      min-height:600px;
+    }
+  }
+}
