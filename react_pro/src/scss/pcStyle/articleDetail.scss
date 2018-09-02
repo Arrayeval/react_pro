@@ -2,17 +2,9 @@
   width:1200px;
   min-height:200px;
   margin:0 auto;
+  padding-top:90px;
   .article-main-box{
     display: flex;
-    // .left-progress{
-    //   position: fixed;
-    //   left: 100px;
-    //   display: flex;
-    //   flex-direction: column;
-    //   .progress-item{
-
-    //   }
-    // }
     .article-content{
       flex: 1;
       .article-title{
@@ -23,7 +15,7 @@
       }
     }
     .right-aside-wrapper{
-      flex: 0 0 400px;
+      flex: 0 0 250px;
       min-height:600px;
     }
   }

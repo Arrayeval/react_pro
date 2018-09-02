@@ -17,12 +17,12 @@ class ArticleDetail extends Component {
                     <li className="progress-item">title3</li>
                     <li className="progress-item">title4</li>
                 </ul> */}
-                <section classs="article-content">
+                <section className="article-content">
                     <p className="article-title">文章标题</p>
                     <div className="article-word">文章内容。。。。。</div>
                 </section>
-                <section class="right-aside-wrapper">
-                    左侧浮内容
+                <section className="right-aside-wrapper">
+                    右侧浮内容
                 </section>
             </div>
         </div>
