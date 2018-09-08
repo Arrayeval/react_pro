@@ -3,41 +3,68 @@ import {Link } from "react-router-dom"
 import { Select} from 'antd'
 import article from '../../service/article'
 import {typeList} from '../../modles/congfig'
+import InfiniteScroll from 'react-infinite-scroller'
 import '../../scss/pcStyle/articleList.scss'
 class  articleList extends Component {
   constructor(props) {
     super(props)
     this.state ={
       articleArr: [],
-      typeList: typeList
+      typeList: typeList,
+      timer: null,
+      hasMore: true,
+      pageStart: 0,
+      optionsType: ''
     }
   };
   // 初始化模块选择框
   initSelect () {
     const Option = Select.Option
+    console.log(typeList)
     const options_html = typeList.map((item, index)=>(
-      <Option value={item.name} key={index}>{item.key}</Option>
+      <Option value={item.name} key={index}>{item.name}</Option>
     ))
     return <div style={{ display:'inline-block'}}>
-      <Select defaultValue='vue' style={{ width: 120, display:'inline-block'}} onChange={this.handleChangeModule.bind(this)}>
+      <Select defaultValue='全部' style={{ width: 120, display:'inline-block'}} onChange={this.handleChangeModule.bind(this)}>
         {options_html}
       </Select>
       </div>
   }
 
   handleChangeModule (optionsType) {
-    this.getArticleList(optionsType)
+    if (optionsType === '全部') {
+      optionsType = ''
+    }
+    // 每一次切换tab,需要重新设置hasMore
+    this.setState({hasMore: true})
+    this.setState({articleArr: []})
+    this.setState({pageStart: 0})
+    this.setState({optionsType: optionsType})
+    this.getArticleList(this.state.pageStart)
   }
 
   // 获取文章列表数据
-  getArticleList (optionsType) {
-    article.getArticleList({type:optionsType?optionsType: ''}).then(res => {
-      if(res.data.code === 0 ) {
-        this.setState({articleArr: res.data.data})
-      }
-    }).catch(err => {
-      console.log(err)
-    })
+  getArticleList (pageStart = 0) {
+    if (this.state.timer) {
+      return
+    }
+    this.state.timer = setTimeout(() => {
+      article.getArticleList({type: this.state.optionsType, pageStart: pageStart}).then(res => {
+        this.state.timer = null
+        if(res.data.code === 0  && res.data.data.length　> 0) {
+          this.setState((prevState) => { // state的更新是异步的
+            return { articleArr: prevState.articleArr.concat(res.data.data) } // 上一个 setState 
+          })
+        } 
+        if (res.data.data.length === 0) {
+          // 没有更多的数据
+          this.setState({hasMore: false})
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    }, 500)
+   
   }
 
   getLastNews(newLast) {
@@ -102,12 +129,22 @@ class  articleList extends Component {
                 <th>分类</th>
                 <th>用户</th>
                 <th>浏览</th>
-                <th>活动</th>
+                <th>活动{this.state.hasMore}</th>
               </tr>
             </thead>
-            <tbody className="self-body">
+             
+              <InfiniteScroll  
+              className="self-body"
+              element="tbody"
+              pageStart = {this.state.pageStart}
+              loadMore = {this.getArticleList.bind(this)}
+              hasMore = {this.state.hasMore}
+              threshold={250}
+              loader = {<tr key={0}><td colSpan="5" style={{ textAlign:'center'}}>loading.... </td></tr>}
+              >
               {list_html}
-            </tbody>
+              </InfiniteScroll>
+            
           </table>
         </section>
         

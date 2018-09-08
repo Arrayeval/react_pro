@@ -16,7 +16,7 @@ article.addArticle = (obj) => {
 
 // 获得文章列表
 article.getArticleList = (obj) => {
-  let url = webApi.urlList.articles.getArticleList+"?type="+obj.type
+  let url = webApi.urlList.articles.getArticleList+"?type="+obj.type+ "&pageStart=" + obj.pageStart
   return axios.get(url)
 }
 export default article
