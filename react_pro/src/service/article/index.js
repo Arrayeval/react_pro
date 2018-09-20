@@ -19,4 +19,10 @@ article.getArticleList = (obj) => {
   let url = webApi.urlList.articles.getArticleList+"?type="+obj.type+ "&pageStart=" + obj.pageStart
   return axios.get(url)
 }
+
+// 获取文章详情数据
+article.getArticleItem = (obj) => {
+  let url =  webApi.urlList.articles.getArticleItem + "?id = " + obj.id
+  return axios.get(url)
+}
 export default article

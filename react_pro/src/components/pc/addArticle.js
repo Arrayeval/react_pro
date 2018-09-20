@@ -4,6 +4,7 @@ import BraftEditor from 'braft-editor'
 import 'braft-editor/dist/braft.css'
 import '../../scss/pcStyle/addArticle.scss'
 import articles from '../../service/article'
+import {typeList} from '../../modles/congfig'
 import { Select, DatePicker} from 'antd'
 // import Divider from 'antd/lib/divider';
 const Option = Select.Option
@@ -22,18 +23,19 @@ class addArticle extends Component {
 
     // 生命周期函数
     componentDidMount () {
-      //this.BraftEditor.setContent(`<h1>eee</h1>`)
+      // this.BraftEditor.setContent(`<h1>eee</h1>`)
       // this.refs.BraftEditor.setContent()
     };
     
     // 初始化模块选择框
     initSelect () {
+      const options_html = typeList.map((item, index)=>{
+        if (index !== 0)
+         return <Option value={item.name} key={index}>{item.name}</Option>
+      })
       return <div>
-          <Select defaultValue="lucy" style={{ width: 120 }} onChange={this.handleChangeModule.bind(this)}>
-          <Option value="jack">Jack</Option>
-          <Option value="lucy">Lucy</Option>
-          <Option value="disabled" disabled>Disabled</Option>
-          <Option value="Yiminghe">yiminghe</Option>
+        <Select defaultValue="vue" style={{ width: 120 }} onChange={this.handleChangeModule.bind(this)}>
+          {options_html}
         </Select>
       </div>
     }

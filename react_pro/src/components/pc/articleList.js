@@ -20,7 +20,6 @@ class  articleList extends Component {
   // 初始化模块选择框
   initSelect () {
     const Option = Select.Option
-    console.log(typeList)
     const options_html = typeList.map((item, index)=>(
       <Option value={item.name} key={index}>{item.name}</Option>
     ))
@@ -78,36 +77,36 @@ class  articleList extends Component {
   }
 
   createHtml (articleArr) {
-    if (articleArr.length <= 0){
+    if (articleArr.length > 0){
+        return articleArr.map((item,index)=>(
+         <tr key={index}>
+          <td>
+            <Link to={`articleDetail/${item.id}`} className="link-top-line">{item.title}</Link>
+            {/* <a className="link-top-line">{item.title}</a> */}
+            <div className="content-des">
+             {item.shortDes}
+            </div>
+          </td>
+          <td>
+            <span className="type-item-lag">{item.type}</span>
+          </td>
+          <td>
+            <span className="type-item-lag item-name">{item.author}</span>
+          </td>
+          <td>
+            <span className="type-item-lag item-view">{item.id}</span>
+          </td>
+          <td>
+            <span className="type-item-lag item-day">{item.createTime}</span>
+          </td>
+        </tr>
+        ))
+    } else {
       return <tr className="no-data">
         <td colSpan="5">
           <div className= "img-wrapper"><img  alt="nodata" src={require('../../assets/no-data.svg')}/></div>
         </td>
       </tr>
-    } else {
-      return articleArr.map((item,index)=>(
-       <tr key={index}>
-        <td>
-          <Link to={`articleDetail/ee/22`} className="link-top-line">{item.title}</Link>
-          {/* <a className="link-top-line">{item.title}</a> */}
-          <div className="content-des">
-           {item.shortDes}
-          </div>
-        </td>
-        <td>
-          <span className="type-item-lag">{item.type}</span>
-        </td>
-        <td>
-          <span className="type-item-lag item-name">{item.author}</span>
-        </td>
-        <td>
-          <span className="type-item-lag item-view">{item.id}</span>
-        </td>
-        <td>
-          <span className="type-item-lag item-day">{item.createTime}</span>
-        </td>
-      </tr>
-      ))
     }
   }
 
