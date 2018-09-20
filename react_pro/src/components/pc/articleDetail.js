@@ -1,4 +1,5 @@
 import React ,{Component} from 'react'
+import article from '../../service/article'
 import '../../scss/pcStyle/articleDetail.scss'
 class ArticleDetail extends Component {
     constructor(props) {
@@ -7,6 +8,19 @@ class ArticleDetail extends Component {
           articleArr: [],
         }
     };
+    componentDidMount () {
+        const articleId = this.props.match.params.id
+        this.getArticleItem(articleId)
+    }
+    // 获取文章详情
+    getArticleItem (id) {
+        article.getArticleItem({id: id}).then(res => {
+            console.log(res)
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
     render () {
         return (
         <div className="article-detail-wrapper">
