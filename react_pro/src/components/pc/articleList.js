@@ -140,6 +140,7 @@ class  articleList extends Component {
               loadMore = {this.getArticleList.bind(this)}
               hasMore = {this.state.hasMore}
               threshold={250}
+              useWindow={false}
               loader = {<tr key={0}><td colSpan="5" style={{ textAlign:'center'}}>loading.... </td></tr>}
               >
               {list_html}

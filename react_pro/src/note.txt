@@ -12,7 +12,13 @@ React.Children.map(this.props.children,child => <li>{child}</li>)
 react学习：
 1）https://segmentfault.com/a/1190000009684957
 2）http://huziketang.mangojuice.top/books/react/lesson30 【快速入门】
+3) https://www.cnblogs.com/qiaojie/p/6135180.html [react生命周期]
+4) https://rubylouvre.github.io/nanachi/documents/component.html [react小程序]
 
 redux: 
 1）http://www.redux.org.cn/docs/introduction/Examples.html
 2）http://huziketang.mangojuice.top/books/react/lesson30
+
+
+多端开发
+1) https://nervjs.github.io/taro/docs/team.html
