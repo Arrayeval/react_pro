@@ -1,6 +1,6 @@
 
 import axios from 'axios'
-import {hideFullScreenLoading, showFullScreenLoading} from '../utils/common'
+import {hideFullScreenLoading, showFullScreenLoading} from '../utils/loadPressing'
 // 携带cookie
 axios.defaults.withCredentials = true
 

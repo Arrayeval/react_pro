@@ -68,8 +68,8 @@ class  articleList extends Component {
 
   getLastNews(newLast) {
     let timer = new Date()
-    console.log(timer.getDate())
-   // this.getArticleList()
+    // console.log(timer.getDate())
+    // this.getArticleList()
   }
 
   componentWillMount () {

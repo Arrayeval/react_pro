@@ -9,9 +9,32 @@
       flex: 1;
       .article-title{
         font-size: 24px;
+        font-weight: bold;
+        color:rgba(0, 0, 0, 0.75);
+      }
+      .item-wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: inset 0px -1px 1px -1px #c8c7cc;
+        padding-bottom:15px;
+        .item-tag{
+          margin-left:30px;
+        }
+        .item-title{
+          font-weight:bold;
+        }
+        .item-content{
+          font-size: 16px;
+          line-height: 26px;
+        }
       }
       .article-word{
+        text-align: left;
+        text-indent: 20px;
         word-break: break-all;
+        font-size: 16px;
+        line-height: 26px;
       }
     }
     .right-aside-wrapper{

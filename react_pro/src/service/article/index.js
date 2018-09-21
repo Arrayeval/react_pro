@@ -22,7 +22,7 @@ article.getArticleList = (obj) => {
 
 // 获取文章详情数据
 article.getArticleItem = (obj) => {
-  let url =  webApi.urlList.articles.getArticleItem + "?id = " + obj.id
+  let url =  webApi.urlList.articles.getArticleItem + "?id="+obj.id
   return axios.get(url)
 }
 export default article
