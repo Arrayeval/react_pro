@@ -5,7 +5,7 @@ class ArticleDetail extends Component {
     constructor(props) {
         super(props)
         this.state ={
-          articleArr: [],
+          articleDetail: {},
         }
     };
     componentDidMount () {
@@ -16,6 +16,9 @@ class ArticleDetail extends Component {
     getArticleItem (id) {
         article.getArticleItem({id: id}).then(res => {
             console.log(res)
+            if (res.data.code === 0) {
+                this.setState({articleDetail: res.data.result[0]})
+            }
         }).catch(err => {
             console.log(err)
         })
@@ -32,8 +35,22 @@ class ArticleDetail extends Component {
                     <li className="progress-item">title4</li>
                 </ul> */}
                 <section className="article-content">
-                    <p className="article-title">文章标题</p>
-                    <div className="article-word">文章内容。。。。。</div>
+                    <p className="article-title">{this.state.articleDetail.title}</p>
+                    <ul className="item-wrapper">
+                        <li className="item-tag">
+                            <span className="item-title"> 时间：</span>
+                            <span className="item-content"> {this.state.articleDetail.createTime} </span>
+                        </li>
+                        <li className="item-tag">
+                            <span className="item-title">关于：</span>
+                            <span className="item-content">{this.state.articleDetail.type}</span>
+                        </li>
+                        <li className="item-tag">
+                            <span className="item-title">作者：</span>
+                            <span className="item-content">{this.state.articleDetail.author}</span>
+                        </li>
+                    </ul>
+                    <div className="article-word" dangerouslySetInnerHTML={{__html:this.state.articleDetail.content}}></div>
                 </section>
                 <section className="right-aside-wrapper">
                     右侧浮内容

@@ -50,14 +50,18 @@ class addArticle extends Component {
         height: 400,
         contentFormat: 'html',
         initialContent: '<p>请输入文章内容（注意内容格式）...</p>',
-       // onChange: this.handleChangeContent,
-       // onRawChange: this.handleRawChange
+        onChange: this.handleChangeContent,
+        /// onRawChange: this.handleRawChange
       }
     }
 
     // 选择创建时间
     handleChangeTime = (date, dateString) => {
       this.setState({createTime:dateString})
+    }
+
+    handleChangeContent = (editorState) => {
+      this.setState({content: editorState})
     }
   
     // 重置，返回
@@ -74,7 +78,7 @@ class addArticle extends Component {
     }
 
     handelData () {
-      this.setState({content: this.refs.BraftEditor.getContent()})
+     //  this.setState({content: this.refs.BraftEditor.getContent()})
       articles.addArticle(this.state).then((res)=>{
         if (res.data.code === 0) {
           this.props.history.push({pathname:'articleList'})
@@ -85,8 +89,8 @@ class addArticle extends Component {
     }
 
     render () {
-      // 文本编辑器初始化配置
-      const editorProps = this.initEditior()
+       // 文本编辑器初始化配置
+        const editorProps = this.initEditior()
         return (
           <div style={{paddingTop:'100px'}}>
             <div className="add-article-part">
