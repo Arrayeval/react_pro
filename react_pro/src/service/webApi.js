@@ -12,7 +12,8 @@ const urlList ={
   articles:{
     addArticle: mangageBase +'article/addArticle/',
     getArticleList: mangageBase + 'article/getArticleList',
-    getArticleItem: mangageBase + 'article/getArticleItem'
+    getArticleItem: mangageBase + 'article/getArticleItem',
+    getSpecialArticleList: mangageBase + 'article/getSpecialArticleList'
   },
 
   // 上传[图片，文件]

@@ -20,9 +20,17 @@ article.getArticleList = (obj) => {
   return axios.get(url)
 }
 
+// 文章列表特殊检索
+article.getSpecialArticleList = (obj) => {
+  let url = webApi.urlList.articles.getSpecialArticleList + `?serachTime=${obj.searchTime}&keyWord=${obj.keyWord}`
+  return axios.get(url)
+}
+
 // 获取文章详情数据
 article.getArticleItem = (obj) => {
   let url =  webApi.urlList.articles.getArticleItem + "?id="+obj.id
   return axios.get(url)
 }
+
+// 获取
 export default article
