@@ -36,7 +36,7 @@ class addModules extends Component {
 
     // 设置时间
     onChangeTime (date, dateString) {
-        this.setState({time_date:dateString})
+        dateString !== '' ? this.setState({time_date:dateString}) : ''
     }
 
     handelVal (event) {
@@ -57,7 +57,6 @@ class addModules extends Component {
         }).catch(err=>{
             console.log(err)
         });
-        console.log(this.state)
     }
 
     goBack () {

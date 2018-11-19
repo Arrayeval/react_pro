@@ -110,7 +110,8 @@ class ArticleDetail extends Component {
                             <input className="input-select" placeholder="输入文章类型，或者作者名..." name="searchKeyWord" onChange={this.handelVal.bind(this)}/>
                             <span className="btn-search" onClick={this.getSpecialArticleList.bind(this, {keyWord: this.state.searchKeyWord})}>点击搜索</span>
                         </p>
-                        {this.createAsideArticleList(this.state.articleList)}
+                        {/* {this.createAsideArticleList(this.state.articleList)} */}
+                        {asideArticleListHtml}
                         {/* <ul className="new-article-list">
                             <li className="article-item" onClick={this.goViewArticleItem.bind(this)}>
                                 <span className="item-lag">01</span>
