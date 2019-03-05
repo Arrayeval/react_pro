@@ -39,6 +39,9 @@
     })
   }
 
+  goStockInfo () {
+    this.props.history.push({pathname: 'stockInfo'})
+  }
   componentWillMount () {
     this.getTabs.bind(this)();
   }
@@ -64,6 +67,7 @@
         <div className="config-wrapper">
           <div className="config-area">
             <span className="add-btn inline-block cursor-pointer"  onClick={this.addModule.bind(this)}>+ Add</span>
+            <span className="add-btn inline-block cursor-pointer stock-info"  onClick={this.goStockInfo.bind(this)}>查看股票信息</span>
             <span className="login-out-area">
               <span className="change-item"> </span>
               <span className="change-item"></span>
