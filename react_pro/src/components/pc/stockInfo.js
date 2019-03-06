@@ -3,9 +3,9 @@ import '../../scss/pcStyle/stockInfo.scss'
 const ECHARTS = require("echarts")
 let ws = new WebSocket('ws://localhost:8080')
 class stockInfo extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.state= {
+    this.state = {
       isClose: false,
       stocks: {
         'alibaba': 357.22,
@@ -17,48 +17,48 @@ class stockInfo extends Component {
       stock_request: { "stocks": ["alibaba", "tencent", "wangyi", "baidu", "toutiao"] }
     }
   }
-  initEchart () {
+  initEchart() {
     let myChart = ECHARTS.init(document.getElementById('charts'))
     myChart.setOption({
       color: ['#3398DB'],
-      tooltip : {
-          trigger: 'axis',
-          axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-              type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-          }
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+          type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
       },
       grid: {
-          left: '3%',
-          right: '4%',
-          bottom: '3%',
-          containLabel: true
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
       },
-      xAxis : [
-          {
-              type : 'category',
-              data : this.state.stock_request['stocks'],
-              axisTick: {
-                  alignWithLabel: true
-              }
+      xAxis: [
+        {
+          type: 'category',
+          data: this.state.stock_request['stocks'],
+          axisTick: {
+            alignWithLabel: true
           }
+        }
       ],
-      yAxis : [
-          {
-              type : 'value'
-          }
+      yAxis: [
+        {
+          type: 'value'
+        }
       ],
-      series : [
-          {
-              name:'直接访问',
-              type:'bar',
-              barWidth: '60%',
-              data: Object.values(this.state.stocks)
-          }
+      series: [
+        {
+          name: '直接访问',
+          type: 'bar',
+          barWidth: '60%',
+          data: Object.values(this.state.stocks)
+        }
       ]
     })
   }
 
-  updateUI (ws) {
+  updateUI(ws) {
     ws.onopen = (e) => {
       this.isClose = false;
       ws.send(JSON.stringify(this.state.stock_request))
@@ -67,31 +67,31 @@ class stockInfo extends Component {
     ws.onmessage = (e) => {
       var stocksData = JSON.parse(e.data);
       for (var symbol in stocksData) {
-          if (stocksData.hasOwnProperty(symbol)) {
-              this.state.stocks[symbol] = stocksData[symbol];
-              this.initEchart()
-              console.log(this.state.stocks)
-          }
+        if (stocksData.hasOwnProperty(symbol)) {
+          this.state.stocks[symbol] = stocksData[symbol];
+          this.initEchart()
+          console.log(this.state.stocks)
+        }
       }
     };
   }
 
-  getData () {
+  getData() {
     ws.onopen = function (e) {
       ws.send('ww');
     }
   }
-  
-  componentDidMount () {
+
+  componentDidMount() {
     this.initEchart()
     this.updateUI(ws)
   }
 
-  render () {
+  render() {
     return (
       <div className='contain-wrapper'>
         <div className="charts-wrapper">
-         <div id="charts" className="charts-pic"></div>
+          <div id="charts" className="charts-pic"></div>
         </div>
       </div>
     )
