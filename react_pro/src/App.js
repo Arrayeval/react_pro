@@ -10,6 +10,7 @@ import AddArticle from './components/pc/addArticle'
 import ArticleList from './components/pc/articleList'
 import ArticleDetail from './components/pc/articleDetail'
 import StockInfo from './components/pc/stockInfo'
+import Communication from './components/pc/communication'
 import ReduxUse from './base/reduxUse'
 import ReduxUse2 from './base/reduxUse2'
 
@@ -52,6 +53,8 @@ class App extends Component {
                 <Route path="/addModule" component={PCAddModule }></Route>
                 {/*股票信息*/}
                 <Route path="/stockInfo" component={StockInfo }></Route>
+                {/*聊天室*/}
+                <Route path="/communication" component={Communication }></Route>
                 {/*添加文章*/}
                 <Route path="/addArticle" component={AddArticle}></Route>
                 {/*文章列表*/}
