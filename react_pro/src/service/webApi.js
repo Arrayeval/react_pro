@@ -1,4 +1,4 @@
-let mangageBase = window.location.protocol + '//' + window.location.hostname + ':3001/'
+let mangageBase = window.location.protocol + '//' + window.location.hostname + ':3000/'
 
 const urlList ={
   // 模块编辑
@@ -20,6 +20,17 @@ const urlList ={
   uploadFile:{
     uploadImg: mangageBase + 'upload/uploadImg/',  // 多张一次传
     // uploadSingle: mangageBase + 'upload/uploadImg', // 一次传一张  
+  },
+
+  // 用户相关
+  userHandle: {
+    login: mangageBase + 'user/login'
+  },
+
+  // 获取外部数据
+  getOuterData: {
+    // 掘金列表数据
+    getListData: mangageBase + 'getouterdata/getJueJinData'
   }
 }
 
