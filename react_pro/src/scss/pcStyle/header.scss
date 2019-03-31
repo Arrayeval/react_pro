@@ -1,5 +1,5 @@
 .header-wrapper{
-  background: rgb(1,158,211);
+  background: #73d272;
   width:100%;
   text-align: center;
   position: fixed;
@@ -7,8 +7,7 @@
 }
 .inner-wrapper{
   width:1200px;
-  // padding-left:87px;
-  // padding-right:30px;
+
   margin:0 auto;
   height:83px;
   line-height: 83px;
@@ -32,5 +31,22 @@
     margin-right:10px;
     background: #fff;
     vertical-align: middle;
+  }
+}
+.tabbar-wrapper{
+  padding-top: 94px;
+  display: flex;
+  width:1200px;
+  margin: 0 auto;
+  .tab-item{
+    flex: 0 0 100px;
+    height:30px;
+    line-height: 30px;
+    border-radius:15px;
+    background: #73d272;
+    margin-right:20px;
+    color:#fff;
+    box-shadow: 1px 1px 10px #73d277;
+    cursor: pointer;
   }
 }

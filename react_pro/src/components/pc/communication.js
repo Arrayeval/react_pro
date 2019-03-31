@@ -25,8 +25,8 @@ class communication extends Component {
     appendLog (type, nickname, message) {
         console.log(type, nickname, message)
         if(typeof message === 'undefined' ) return ;
-        var messages = document.getElementById('messages');
-        var messageElem = document.createElement('li');
+        // var messages = document.getElementById('messages');
+        // var messageElem = document.createElement('li');
         let htmlObj = {
             "notification": "<span class='label label-info'>*</span>",
             "nick_update": "<span class='label label'></span>",

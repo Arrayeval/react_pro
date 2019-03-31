@@ -69,9 +69,6 @@ class ArticleDetail extends Component {
     }
 
     handelVal (event) {
-        let _name = event.target.name
-       //  let _obj = {};
-        // _obj[_name] = event.target.value
         this.setState({searchKeyWord: event.target.value});
     }
 

@@ -3,7 +3,7 @@ import MediaQuery from 'react-responsive'
 import {Route,BrowserRouter as Router,Switch } from "react-router-dom"
 // import logo from './logo.svg';
 import './scss/App.css';
-import SelfHeader from './components/pc/selfHeder'
+
 import ModuleParts from './components/pc/modulePart'
 import PCAddModule from './components/pc/addModules'
 import AddArticle from './components/pc/addArticle'
@@ -11,11 +11,12 @@ import ArticleList from './components/pc/articleList'
 import ArticleDetail from './components/pc/articleDetail'
 import StockInfo from './components/pc/stockInfo'
 import Communication from './components/pc/communication'
+import ShowJueJin from './components/pc/showJueJin'
 import ReduxUse from './base/reduxUse'
 import ReduxUse2 from './base/reduxUse2'
 
 import PropTypes from 'prop-types'
-import { Provider, connect } from 'react-redux'
+import { Provider } from 'react-redux'
 import store from './redux/store'
 class App extends Component {
   // 申明组件全局变量
@@ -45,10 +46,11 @@ class App extends Component {
           {this.props.children} {/*组件内部的东西*/}
           {/* pc端 */}
           <MediaQuery query="(min-device-width: 1200px)">
-            <SelfHeader/>
             <Router>
               <Switch >
-                <Route exact path="/" component={ModuleParts}></Route>
+                {/*掘金数据展示*/}
+                <Route exact path="/" component={ShowJueJin}></Route>
+                <Route path="/ModuleParts" component={ModuleParts}></Route>
                 {/*添加模块*/}
                 <Route path="/addModule" component={PCAddModule }></Route>
                 {/*股票信息*/}

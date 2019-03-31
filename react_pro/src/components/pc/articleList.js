@@ -4,6 +4,7 @@ import { Select} from 'antd'
 import article from '../../service/article'
 import {typeList} from '../../modles/congfig'
 import InfiniteScroll from 'react-infinite-scroller'
+import SelfHeader from './selfHeder'
 import '../../scss/pcStyle/articleList.scss'
 class  articleList extends Component {
   constructor(props) {
@@ -23,11 +24,13 @@ class  articleList extends Component {
     const options_html = typeList.map((item, index)=>(
       <Option value={item.name} key={index}>{item.name}</Option>
     ))
-    return <div style={{ display:'inline-block'}}>
-      <Select defaultValue='全部' style={{ width: 120, display:'inline-block'}} onChange={this.handleChangeModule.bind(this)}>
-        {options_html}
-      </Select>
-      </div>
+    return (
+    <div style={{ display:'inline-block'}}>
+          <Select defaultValue='全部' style={{ width: 120, display:'inline-block'}} onChange={this.handleChangeModule.bind(this)}>
+            {options_html}
+          </Select>
+          </div>
+    )
   }
 
   handleChangeModule (optionsType) {
@@ -47,9 +50,9 @@ class  articleList extends Component {
     if (this.state.timer) {
       return
     }
-    this.state.timer = setTimeout(() => {
+    let timer = setTimeout(() => {
       article.getArticleList({type: this.state.optionsType, pageStart: pageStart}).then(res => {
-        this.state.timer = null
+        this.setState({timer: null})
         if(res.data.code === 0  && res.data.data.length　> 0) {
           this.setState((prevState) => { // state的更新是异步的
             return { articleArr: prevState.articleArr.concat(res.data.data) } // 上一个 setState 
@@ -63,13 +66,12 @@ class  articleList extends Component {
         console.log(err)
       })
     }, 500)
-   
+    this.setState({
+      timer: timer
+    })
   }
 
   getLastNews(newLast) {
-    let timer = new Date()
-    // console.log(timer.getDate())
-    // this.getArticleList()
   }
 
   componentWillMount () {
@@ -114,40 +116,40 @@ class  articleList extends Component {
     const initSelect = this.initSelect()
     const list_html = this.createHtml(this.state.articleArr)
     return (
-      <div className="article-list-box">
-        <section className="classify-item">
-         {initSelect}
-         <span className="new-last">最新 </span>
-         <span className="classify-hover-btn" onClick={this.getLastNews.bind(this,'newLast')}>最新</span>
-        </section>
-        <section className="self-part">
-          <table>
-            <thead className="self-header">
-              <tr>
-                <th>主题</th>
-                <th>分类</th>
-                <th>用户</th>
-                <th>浏览</th>
-                <th>活动{this.state.hasMore}</th>
-              </tr>
-            </thead>
-             
+      <div>
+        <SelfHeader history={this.props.history}/>
+        <div className="article-list-box">
+          <section className="classify-item">
+          {initSelect}
+          <span className="new-last">最新 </span>
+          <span className="classify-hover-btn" onClick={this.getLastNews.bind(this,'newLast')}>最新</span>
+          </section>
+          <section className="self-part">
+            <table>
+              <thead className="self-header">
+                <tr>
+                  <th>主题</th>
+                  <th>分类</th>
+                  <th>用户</th>
+                  <th>浏览</th>
+                  <th>活动{this.state.hasMore}</th>
+                </tr>
+              </thead>
               <InfiniteScroll  
-              className="self-body"
-              element="tbody"
-              pageStart = {this.state.pageStart}
-              loadMore = {this.getArticleList.bind(this)}
-              hasMore = {this.state.hasMore}
-              threshold={250}
-              useWindow={false}
-              loader = {<tr key={0}><td colSpan="5" style={{ textAlign:'center'}}>loading.... </td></tr>}
-              >
-              {list_html}
+                className="self-body"
+                element="tbody"
+                pageStart = {this.state.pageStart}
+                loadMore = {this.getArticleList.bind(this)}
+                hasMore = {this.state.hasMore}
+                threshold={250}
+                useWindow={false}
+                loader = {<tr key={0}><td colSpan="5" style={{ textAlign:'center'}}>loading.... </td></tr>}
+                >
+                {list_html}
               </InfiniteScroll>
-            
-          </table>
-        </section>
-        
+            </table>
+          </section>
+        </div>
       </div>
     ) 
   }

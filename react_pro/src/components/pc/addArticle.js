@@ -1,5 +1,6 @@
 import React ,{Component} from 'react'
 import BraftEditor from 'braft-editor'
+import SelfHeader from './selfHeder'
 // https://npm.taobao.org/package/braft-editor
 import 'braft-editor/dist/braft.css'
 import '../../scss/pcStyle/addArticle.scss'
@@ -92,50 +93,53 @@ class addArticle extends Component {
        // 文本编辑器初始化配置
         const editorProps = this.initEditior()
         return (
-          <div style={{paddingTop:'100px'}}>
-            <div className="add-article-part">
-              <div className="add-item">
-                <p className="item-lag">文章所属模块：</p>
-                <div className="item-area">
-                  {this.initSelect()}
-                </div>
-              </div>
-              <div className="add-item">
-                <p className="item-lag">添加文章标题：</p>
-                <div className="item-area">
-                  <input className="item-input"  name="title" onChange={this.handelVal.bind(this)}/>
-                </div>
-                <p className="item-lag">文章作者：</p>
-                <div className="item-area">
-                  <input className="item-input" name="author" onChange={this.handelVal.bind(this)}/>
-                </div>
-              </div>
-              <div className="add-item">
-                <p className="item-lag">文章简述：</p>
-                <div className="item-area">
-                  <textarea className="item-textarea" name="shortDes" onChange={this.handelVal.bind(this)} ></textarea>
-                </div>
-              </div>
-              <div className="add-item">
-                <p className="item-lag">添加文章内容：</p>
-                <div className="item-area editor-box">
-                  {/* ref={instance  => this.BraftEditor = instance } */}
-                  <BraftEditor ref="BraftEditor"  {...editorProps}/>
-                </div>
-              </div>
-              <div className="add-item">
-                <p className="item-lag">添加时间：</p>
+          <div>
+            <SelfHeader history={this.props.history}/>
+            <div style={{paddingTop:'100px'}}>
+              <div className="add-article-part">
+                <div className="add-item">
+                  <p className="item-lag">文章所属模块：</p>
                   <div className="item-area">
-                  <DatePicker 
-                      format="YYYY-MM-DD HH:mm:ss"
-                      onChange={this.handleChangeTime.bind(this,)}
-                      placeholder="创建时间..."/>
+                    {this.initSelect()}
                   </div>
-              </div>
-              <div className="add-item">
-                <div className="btn-wrapper">
-                  <button className="actionBtn" onClick={this.handelData.bind(this)}>提交</button>
-                  <button className="actionBtn cancelBtn"  onClick={this.goBack.bind(this)}>重置</button>
+                </div>
+                <div className="add-item">
+                  <p className="item-lag">添加文章标题：</p>
+                  <div className="item-area">
+                    <input className="item-input"  name="title" onChange={this.handelVal.bind(this)}/>
+                  </div>
+                  <p className="item-lag">文章作者：</p>
+                  <div className="item-area">
+                    <input className="item-input" name="author" onChange={this.handelVal.bind(this)}/>
+                  </div>
+                </div>
+                <div className="add-item">
+                  <p className="item-lag">文章简述：</p>
+                  <div className="item-area">
+                    <textarea className="item-textarea" name="shortDes" onChange={this.handelVal.bind(this)} ></textarea>
+                  </div>
+                </div>
+                <div className="add-item">
+                  <p className="item-lag">添加文章内容：</p>
+                  <div className="item-area editor-box">
+                    {/* ref={instance  => this.BraftEditor = instance } */}
+                    <BraftEditor ref="BraftEditor"  {...editorProps}/>
+                  </div>
+                </div>
+                <div className="add-item">
+                  <p className="item-lag">添加时间：</p>
+                    <div className="item-area">
+                    <DatePicker 
+                        format="YYYY-MM-DD HH:mm:ss"
+                        onChange={this.handleChangeTime.bind(this,)}
+                        placeholder="创建时间..."/>
+                    </div>
+                </div>
+                <div className="add-item">
+                  <div className="btn-wrapper">
+                    <button className="actionBtn" onClick={this.handelData.bind(this)}>提交</button>
+                    <button className="actionBtn cancelBtn"  onClick={this.goBack.bind(this)}>重置</button>
+                  </div>
                 </div>
               </div>
             </div>

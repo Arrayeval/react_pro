@@ -1,5 +1,5 @@
 // 处理文件上传的逻辑
-import axios from '../index'
+// import axios from '../index'
 import webApi from '../webApi'
 
 const uploadFun = {

@@ -1,16 +1,16 @@
 import React ,{Component} from 'react'
 
 import '../../scss/pcStyle/addModules.scss'
-import {Route,BrowserRouter as Router,Switch,Link } from "react-router-dom"
+import {Link } from "react-router-dom"
 import PropTypes from 'prop-types'
-import detail from '../../components/pc/detail'
+// import detail from '../../components/pc/detail'
 import { DatePicker} from 'antd'
 import moment from 'moment';
 import PicturesWall from '../../base/picturesWall.js'
 import tabs from '../../service/tab'
 import uploadFun from '../../service/upload'
 import Item from '../../../node_modules/antd/lib/list/Item';
-const { MonthPicker, RangePicker, WeekPicker } = DatePicker
+import SelfHeader from './selfHeder'
 class addModules extends Component {
     // 引入themeColor
     static contextTypes ={
@@ -110,50 +110,53 @@ class addModules extends Component {
         var fileUploadUrl = uploadFun.uploadMutliImg()
         const fileCount = 1;
         return (
-            <div className="add-module-wrapper">
-            <p className="route-wrapper">
-              <Link to='/' className="back-btn" tag="button">back</Link>
-              {this.props.module}
-            </p>
-            <div className="module-form">
-             <div className="item-form">
-                <label className="self-lebal" style={{color:this.context.themeColor}}>模块名：</label>
-                <input type="text" placeholder="请输入文章标题" className="self-input" name="lag_title" value={this.state.lag_title}  onChange={this.handelVal.bind(this)}/>
-             </div>
-             <div className="item-form"> 
-                <label className="self-lebal textarea-lebal">简单描述：</label>
-                <textarea type="text" placeholder="随便写写这模块是干什么的..." className="self-textarea" name="short_des" value={this.state.short_des} onChange={this.handelVal.bind(this)}></textarea>
-             </div>
-             <div className="item-form">
-                <label className="self-lebal">创建时间：</label>
-                {/* <input type="text" placeholder="请输入文章标题" className="self-input"/> */}
-                <DatePicker 
-                    format="YYYY-MM-DD"
-                    value= {moment(this.state.time_date, "YYYY-MM-DD")}
-                    onChange={this.onChangeTime.bind(this)}
-                    placeholder="创建时间..."/>
-             </div>
-             <div className="item-form">
-                <label className="self-lebal">创建作者：</label>
-                <input type="text" placeholder="我们需要一个作者" className="self-input" name="author_name" value={this.state.author_name} onChange={this.handelVal.bind(this)}/>
-             </div>
-             <div className="item-form">
-                <label className="self-lebal">模块logo：</label>
-                <div className="add-btn vertical-top">
-                    <PicturesWall handleFile = {this.handleFile.bind(this)} actionUrl = {fileUploadUrl} fileList={this.state.file_data}  fileCount={fileCount}/>
+            <div>
+                <SelfHeader history={this.props.history}/>
+                <div className="add-module-wrapper">
+                    <p className="route-wrapper">
+                    <Link to='/' className="back-btn" tag="button">back</Link>
+                    {this.props.module}
+                    </p>
+                    <div className="module-form">
+                <div className="item-form">
+                    <label className="self-lebal" style={{color:this.context.themeColor}}>模块名：</label>
+                    <input type="text" placeholder="请输入文章标题" className="self-input" name="lag_title" value={this.state.lag_title}  onChange={this.handelVal.bind(this)}/>
                 </div>
-                {/* <input type="text" placeholder="请输入文章标题" className="self-input"/> */}
-             </div>
-             <div className="item-form">
-               <button className="actionBtn" onClick={this.dealData.bind(this)}>提交</button>
-               <button className="actionBtn cancelBtn" onClick={this.goBack.bind(this)}>重置</button>
-             </div>
-            </div>
-                {/*  使用链接跳转路由的实现方式
-                <Link to={`${this.props.match.url}/ee/22`} className="clearfix">detailBtn</Link>
-                <Route exact path={`${this.props.match.url}`} component={detail}></Route>
-                <Route path={`${this.props.match.url}/ee/:id`} component={detail}></Route>
-                <Link to='/' className="clearfix">addModule</Link> */}
+                <div className="item-form"> 
+                    <label className="self-lebal textarea-lebal">简单描述：</label>
+                    <textarea type="text" placeholder="随便写写这模块是干什么的..." className="self-textarea" name="short_des" value={this.state.short_des} onChange={this.handelVal.bind(this)}></textarea>
+                </div>
+                <div className="item-form">
+                    <label className="self-lebal">创建时间：</label>
+                    {/* <input type="text" placeholder="请输入文章标题" className="self-input"/> */}
+                    <DatePicker 
+                        format="YYYY-MM-DD"
+                        value= {moment(this.state.time_date, "YYYY-MM-DD")}
+                        onChange={this.onChangeTime.bind(this)}
+                        placeholder="创建时间..."/>
+                </div>
+                <div className="item-form">
+                    <label className="self-lebal">创建作者：</label>
+                    <input type="text" placeholder="我们需要一个作者" className="self-input" name="author_name" value={this.state.author_name} onChange={this.handelVal.bind(this)}/>
+                </div>
+                <div className="item-form">
+                    <label className="self-lebal">模块logo：</label>
+                    <div className="add-btn vertical-top">
+                        <PicturesWall handleFile = {this.handleFile.bind(this)} actionUrl = {fileUploadUrl} fileList={this.state.file_data}  fileCount={fileCount}/>
+                    </div>
+                    {/* <input type="text" placeholder="请输入文章标题" className="self-input"/> */}
+                </div>
+                <div className="item-form">
+                <button className="actionBtn" onClick={this.dealData.bind(this)}>提交</button>
+                <button className="actionBtn cancelBtn" onClick={this.goBack.bind(this)}>重置</button>
+                </div>
+                </div>
+                    {/*  使用链接跳转路由的实现方式
+                    <Link to={`${this.props.match.url}/ee/22`} className="clearfix">detailBtn</Link>
+                    <Route exact path={`${this.props.match.url}`} component={detail}></Route>
+                    <Route path={`${this.props.match.url}/ee/:id`} component={detail}></Route>
+                    <Link to='/' className="clearfix">addModule</Link> */}
+                </div>
             </div>
         )
     } 

@@ -1,4 +1,4 @@
-let mangageBase = window.location.protocol + '//' + window.location.hostname + ':3000/'
+let mangageBase = window.location.protocol + '//' + window.location.hostname + ':8000/'
 
 const urlList ={
   // 模块编辑

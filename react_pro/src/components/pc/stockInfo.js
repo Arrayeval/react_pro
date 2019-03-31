@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import SelfHeader from './selfHeder'
 import '../../scss/pcStyle/stockInfo.scss'
+
 const ECHARTS = require("echarts")
 let ws = new WebSocket('ws://localhost:8080')
 class stockInfo extends Component {
@@ -89,9 +91,12 @@ class stockInfo extends Component {
 
   render() {
     return (
-      <div className='contain-wrapper'>
-        <div className="charts-wrapper">
-          <div id="charts" className="charts-pic"></div>
+      <div>
+        <SelfHeader history={this.props.history}/>
+        <div className='contain-wrapper'>
+          <div className="charts-wrapper">
+            <div id="charts" className="charts-pic"></div>
+          </div>
         </div>
       </div>
     )
