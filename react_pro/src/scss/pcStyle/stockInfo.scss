@@ -1,9 +1,28 @@
 .contain-wrapper{
     display:flex;
-    justify-content: center;
-    padding-top:100px;
+    margin:0 auto;
+    width:1200px;
+    justify-content: flex-start;
+    padding-top:50px;
 }
 .charts-pic{
     width: 400px;
     height: 400px;
+}
+.stock-table{
+    margin-left: 100px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width:500px;
+    .table-wrapper{
+        width:100%;
+        border:1px solid #dddd;
+        th,tr,td{
+            border:1px solid #dddd;
+        }
+        tr{
+            height:40px;
+        }
+    }
 }

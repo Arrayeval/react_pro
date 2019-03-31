@@ -3,26 +3,27 @@ import SelfHeader from './selfHeder'
 import '../../scss/pcStyle/stockInfo.scss'
 
 const ECHARTS = require("echarts")
-let ws = new WebSocket('ws://localhost:8080')
+let ws = ''
 class stockInfo extends Component {
   constructor(props) {
     super(props)
     this.state = {
       isClose: false,
       stocks: {
-        'alibaba': 357.22,
-        'tencent': 453.2,
-        'wangyi': 215.2,
-        'baidu': 200.2,
-        'toutiao': 200
+        'alibaba': 0,
+        'tencent': 0,
+        'wangyi': 0,
+        'baidu': 0,
+        'toutiao': 0
       },
       stock_request: { "stocks": ["alibaba", "tencent", "wangyi", "baidu", "toutiao"] }
     }
   }
   initEchart() {
-    let myChart = ECHARTS.init(document.getElementById('charts'))
+    let that = this;
+    let myChart = ECHARTS.init(that.refs.charts)
     myChart.setOption({
-      color: ['#3398DB'],
+      color: ['#e08787'],
       tooltip: {
         trigger: 'axis',
         axisPointer: {            // 坐标轴指示器，坐标轴触发有效
@@ -60,33 +61,42 @@ class stockInfo extends Component {
     })
   }
 
+  connectWS () {
+    ws = new WebSocket('ws://localhost:8080')
+  }
+
+  disconnectWS () {
+    ws.close() 
+  }
+
   updateUI(ws) {
     ws.onopen = (e) => {
       this.isClose = false;
       ws.send(JSON.stringify(this.state.stock_request))
     }
-
     ws.onmessage = (e) => {
       var stocksData = JSON.parse(e.data);
+      var stockObj = {};
       for (var symbol in stocksData) {
         if (stocksData.hasOwnProperty(symbol)) {
-          this.state.stocks[symbol] = stocksData[symbol];
-          this.initEchart()
-          console.log(this.state.stocks)
+          stockObj[symbol] = stocksData[symbol];
         }
       }
+      this.setState({
+        stocks: stockObj
+      })
+      this.initEchart()
     };
   }
 
-  getData() {
-    ws.onopen = function (e) {
-      ws.send('ww');
-    }
-  }
-
   componentDidMount() {
-    this.initEchart()
+    this.connectWS() // connect begin
     this.updateUI(ws)
+    this.initEchart()
+  }
+  
+  componentWillUnmount () {
+   this.disconnectWS()
   }
 
   render() {
@@ -95,7 +105,45 @@ class stockInfo extends Component {
         <SelfHeader history={this.props.history}/>
         <div className='contain-wrapper'>
           <div className="charts-wrapper">
-            <div id="charts" className="charts-pic"></div>
+            <div ref="charts" className="charts-pic"></div>
+          </div>
+          <div  className="stock-table">
+            <table className="table-wrapper">
+              <thead>
+                <tr>
+                  <th>stock en-name</th>
+                  <th>stock cn-name</th>
+                  <th>immediate stock price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Alibaba</td>
+                  <td>阿里巴巴</td>
+                  <td>{this.state.stocks['alibaba']}</td>
+                </tr>
+                <tr>
+                  <td>Tencent</td>
+                  <td>腾讯</td>
+                  <td>{this.state.stocks['tencent']}</td>
+                </tr>
+                <tr>
+                  <td>Wangyi</td>
+                  <td>网易</td>
+                  <td>{this.state.stocks['wangyi']}</td>
+                </tr>
+                <tr>
+                  <td>Baidu</td>
+                  <td>百度</td>
+                  <td>{this.state.stocks['baidu']}</td>
+                </tr>
+                <tr>
+                  <td>Toutiao</td>
+                  <td>头条</td>
+                  <td>{this.state.stocks['toutiao']}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
