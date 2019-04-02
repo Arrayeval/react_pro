@@ -12,6 +12,7 @@ import ArticleDetail from './components/pc/articleDetail'
 import StockInfo from './components/pc/stockInfo'
 import Communication from './components/pc/communication'
 import ShowJueJin from './components/pc/showJueJin'
+import UserLogin from './components/pc/login'
 import ReduxUse from './base/reduxUse'
 import ReduxUse2 from './base/reduxUse2'
 
@@ -49,7 +50,7 @@ class App extends Component {
             <Router>
               <Switch >
                 {/*掘金数据展示*/}
-                <Route exact path="/" component={ShowJueJin}></Route>
+                <Route path="/ShowJueJin" component={ShowJueJin}></Route>
                 <Route path="/ModuleParts" component={ModuleParts}></Route>
                 {/*添加模块*/}
                 <Route path="/addModule" component={PCAddModule }></Route>
@@ -66,6 +67,8 @@ class App extends Component {
                 {/*redux的使用*/}
                 <Route path="/reduxUse" component={ReduxUse}></Route>
                 <Route path="/reduxUse2" component={ReduxUse2}></Route>
+                {/*用户登陆*/}
+                <Route exact path="/" component={UserLogin}></Route>
               </Switch >
             </Router>
           </MediaQuery>
