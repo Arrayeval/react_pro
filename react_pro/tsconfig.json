@@ -1,0 +1,11 @@
+{
+    "compileOpertions": {
+        "outDir": "./built",
+        "allowJs": true,
+        "target": "es5"
+    },
+    "includes": [
+        "./src/**/*.js"
+    ]
+
+}

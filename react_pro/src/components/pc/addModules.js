@@ -9,7 +9,6 @@ import moment from 'moment';
 import PicturesWall from '../../base/picturesWall.js'
 import tabs from '../../service/tab'
 import uploadFun from '../../service/upload'
-import Item from '../../../node_modules/antd/lib/list/Item';
 import SelfHeader from './selfHeder'
 class addModules extends Component {
     // 引入themeColor
@@ -106,7 +105,6 @@ class addModules extends Component {
     }
 
     render () {
-        const {time_date} = this.state
         var fileUploadUrl = uploadFun.uploadMutliImg()
         const fileCount = 1;
         return (
