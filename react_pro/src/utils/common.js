@@ -43,3 +43,18 @@ export function selfDateFormat (t, f, flag) {
   }
   return tarResult
 }
+
+// 深度拷贝
+export  function deepClone (arr) {
+  if(!arr) {
+    return []
+  }
+  let tmp = Array.isArray(arr) ? [] : {}
+  for(var i in arr) {
+    if (Array.isArray(arr[i]) || typeof arr[i] === 'object') {
+      deepClone(arr[i])
+    }
+    tmp[i] = arr[i]
+  }
+  return tmp
+}

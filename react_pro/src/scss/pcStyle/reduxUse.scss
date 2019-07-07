@@ -1,0 +1,36 @@
+.know-wrapper {
+    text-align: left;
+    padding-left:20px;
+}
+.link-to-page{
+    padding:20px;
+    font-size:20px;
+    color: #E56C27
+}
+.des-fun{
+    font-size: 20px;
+    color: rgb(75,158,251);
+    margin: 20px 0;
+}
+.get-state-sty {
+    padding:20px;
+    .des {
+        font-size: 20px;
+    }
+    .data-des {
+        width:200px
+    }
+}
+.redux-action-wrapper {
+    padding:40px 0 10px 0;
+    .redux-ul-wrapper{
+        display: flex;
+        flex-direction: row;
+        .redux-li-item{
+            padding-right:5px;
+        }
+    }
+}
+.study-link{
+    margin-top:100px;
+}

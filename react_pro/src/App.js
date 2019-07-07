@@ -65,8 +65,8 @@ class App extends Component {
                 {/*文章内容详情*/}
                 <Route path="/articleDetail/:id" component={ArticleDetail}></Route>
                 {/*redux的使用*/}
-                <Route path="/reduxUse" component={ReduxUse}></Route>
-                <Route path="/reduxUse2" component={ReduxUse2}></Route>
+                <Route path="/ReduxUse" component={ReduxUse}></Route>
+                <Route path="/ReduxUse2" component={ReduxUse2}></Route>
                 {/*用户登陆*/}
                 <Route exact path="/" component={UserLogin}></Route>
               </Switch >

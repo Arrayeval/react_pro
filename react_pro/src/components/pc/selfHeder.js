@@ -42,7 +42,7 @@ class selfHeader extends Component {
           <li className="tab-item" onClick={this.goTargetPage.bind(this, '/ModuleParts')}>添加模块</li>
           <li className="tab-item" onClick={this.goTargetPage.bind(this, '/stockInfo')}>查看股票信息</li> 
           <li className="tab-item" onClick={this.goTargetPage.bind(this, '/ShowJueJin')}>查看掘金文章</li>
-          <li className="tab-item" onClick={this.goTargetPage.bind(this, '/ReactRedux')}>学习react-redux</li>
+          <li className="tab-item" onClick={this.goTargetPage.bind(this, '/ReduxUse2')}>react-redux使用</li>
         </ul>
       </div>
     )

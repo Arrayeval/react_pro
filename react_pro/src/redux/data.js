@@ -14,8 +14,8 @@ export const tmpData = {
   ]
 }
 
-export const tmpData2 = {
-  cart: [
+export const newProduct = {
+  product: [
     {
       product: 'bread 700g',
       quantity: 20,
@@ -27,4 +27,22 @@ export const tmpData2 = {
       unitCost: 47
     }
   ]
+}
+
+export const bookList = {
+  "sciencist": [
+    {
+      name: '无底黑洞',
+      author: '霍金',
+      id:1
+    },
+  ],
+  "acticle": [
+    {
+      name: "那些年一起追的女孩",
+      author: '九把刀',
+      id:1
+    }
+  ]
+
 }

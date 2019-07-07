@@ -39,7 +39,8 @@
   width:1200px;
   margin: 0 auto;
   .tab-item{
-    flex: 0 0 100px;
+    min-width: 100px;
+    padding: 0 10px;
     height:30px;
     line-height: 30px;
     border-radius:15px;

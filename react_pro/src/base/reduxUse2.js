@@ -1,8 +1,10 @@
 // https://juejin.im/post/5b755537e51d45661d27cdc3#heading-5
 // https://github.com/naihe138/react-plan
+import '../scss/pcStyle/reduxUse.scss'
 import React ,{Component} from 'react'
 import store from '../redux/store'
 import * as Action from '../redux/action'
+import * as CreateAct from '../redux/createAction'
 import { connect } from 'react-redux'
 import {Link } from "react-router-dom"
 
@@ -10,46 +12,78 @@ class RedexUse2 extends Component {
   constructor(props) {
     super(props)
   }
-   // redux fun [直接通过dispatch]
-   onIncrement = () => {
-      store.dispatch({
-        ...Action.increase(),
-        preload: {quantity:2}
-      })
-    }
-
-    onDecrement = () => {
-      store.dispatch({
-        ...Action.decrease(),
-        preload: {quantity:3}
-      })
-    }
-  render() {
-    const { onDecrement2 } = this.props;
-    store.subscribe(() => {
-      console.log("reduxUse2中subscribe 检测到数据变化了", store.getState())
+  // redux fun [直接通过dispatch]
+  onIncrement = () => {
+    store.dispatch({
+      ...Action.increase(),
+      preload: {quantity:2}
     })
-    console.log("this.props.temDate", this.props.temData)
+  }
+
+  onDecrement = () => {
+    store.dispatch({
+      ...Action.decrease(),
+      preload: {quantity:3}
+    })
+  }
+  render() {
+    const { onDecrement2, addBook, deleteBook } = this.props;
+    // store.subscribe(() => {
+    //   console.log("reduxUse2中subscribe 检测到数据变化了", store.getState())
+    // })
+    console.log("this.props.productList", this.props.productList)
     return (
-      <div style={{paddingTop:'200px'}}>
-         <h1 className="text-center mt-5">{JSON.stringify(store.getState())}</h1>
-         <Link to='/reduxUse' className="clearfix">点击一下 go ToReduxUse</Link>
+      <div className="know-wrapper">
+        <Link to='/reduxUse' className="link-to-page">点击一下 go ToReduxUse 》》》</Link>
+        <div className="get-state-sty">
+          <p className="des-fun">store.getSate获取数据</p>
+          <div className="data-des text-center mt-5">{JSON.stringify(store.getState())}</div>
+        </div>
+        <p className="des-fun">以下是使用redux的方法操作数据</p>
          <button className="btn btn-primary mr-2" onClick={this.onIncrement.bind(this)}>
             Increase
           </button>
           <button className="btn btn-danger my-2" onClick={this.onDecrement.bind(this)}>
             Decrease
           </button>
+          <p className="des-fun">以下是使用redux + react-redux的方法操作数据</p>
           <button className="btn btn-danger my-2" onClick={onDecrement2}>
-            Decrease2
+            react-redux的使用方法[Decrease]
           </button>
+          <div className="redux-action-wrapper">
+            <hr/>
+            <p className="des-fun">以下是使用redux + react-redux + react-action的方法操作数据</p>
+            <ul className="redux-ul-wrapper">
+              <li  className="redux-li-item">
+                <button className="btn btn-redux" onClick={addBook}>测试下reduxAction是不是正确的[添加一本书]</button>
+              </li>
+              <li  className="redux-li-item"> 
+                <button className="btn btn-redux" onClick={deleteBook}>测试下reduxAction是不是正确的[删除一本书]</button>
+              </li>
+            </ul>
+          </div>
+          <ul className="study-link">
+            <li className="link-item">
+              <strong>react-action：</strong>
+              <a href="https://redux-actions.js.org/api/combineactions">
+                 https://redux-actions.js.org/api/combineactions
+              </a>
+            </li>
+            <li className="link-item">
+              <strong>react-redux：</strong>
+              <a href="https://www.redux.org.cn/">
+                https://www.redux.org.cn/
+              </a>
+            </li>
+          </ul>
       </div>
     )
   }
 }
 const mapStateToProps = function(store) {
   return {
-    temData: store.changeDataReducer
+    productList: store.changeDataReducer,
+    bookList: store.BookReducer
   };
 };
 
@@ -57,9 +91,14 @@ const mapStateToProps = function(store) {
 const mapDispatchToProps = (dispatch) => {
   return {
     onDecrement2: () => {
-      console.log('eee')
       dispatch({...Action.decrease(),  preload: {quantity:3}})
-    } 
+    },
+    addBook: () => {
+      dispatch({...CreateAct.addBook(),  payload: {name: '牵牛花的春天', author: '石墨烯', type: 'math', id:2}})
+    },
+    deleteBook: () => {
+      dispatch({...CreateAct.deleteBook(),  payload: {type: 'math', id:2}})
+    }
   }
 };
  
