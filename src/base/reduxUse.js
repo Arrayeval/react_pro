@@ -4,6 +4,7 @@ import store from '../redux/store'
 import { connect } from 'react-redux'
 import * as Action from '../redux/action'
 import {Link } from "react-router-dom"
+import {begin_get_user} from '../redux/action'
 class RedexUse extends Component {
   constructor(props) {
     super(props)
@@ -21,6 +22,12 @@ class RedexUse extends Component {
       preload: {quantity:3}
     })
   }
+  onGetUsers = () => {
+    // store.dispatch({
+    //   ...Action.get_users()
+    // })
+    this.props.dispatch(begin_get_user())
+  }
   render() {
     store.subscribe(() => {
       console.log("reduxUse中subscribe 检测到数据变化了", store.getState())
@@ -36,13 +43,17 @@ class RedexUse extends Component {
           <button className="btn btn-danger my-2" onClick={this.onDecrement.bind(this)}>
             Decrease
           </button>
+          <button className="btn btn-danger my-2" onClick={this.onGetUsers.bind(this)}>
+            getUsers
+          </button>
       </div>
     )
   }
 }
 const mapStateToProps = function(store) {
   return {
-    temData: store.changeDataReducer
+    temData: store.changeDataReducer,
+
   };
 };
 export default connect(mapStateToProps)(RedexUse);

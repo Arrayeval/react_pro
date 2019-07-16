@@ -46,3 +46,18 @@ export const bookList = {
   ]
 
 }
+
+export const usersList = { 
+	fetched: false, 
+	users: [{
+		key: '1',
+		name: '张三',
+		email: 'zhangsan@126.com'
+    }],
+    posts: [{
+        key: '1',
+        id: '1',
+        title: 'test'
+    }],
+	error: null
+};
