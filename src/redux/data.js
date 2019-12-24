@@ -61,3 +61,8 @@ export const usersList = {
     }],
 	error: null
 };
+
+export const errorInfo = {
+  status: 200,
+  msg: '目前没有失败的操作'
+}

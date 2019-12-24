@@ -16,9 +16,9 @@ const changeDataReducer = (state = initialState, action) => {
       return {...state}
     case ActionTypes.GET_USERS: 
       return {...state, ohter: {
-          product: 'milk 500ml',
-          quantity: 1,
-          unitCost: 47
+        product: 'milk 500ml',
+        quantity: 1,
+        unitCost: 47
       }}
     case ActionTypes.GET_ERROR: 
       return {
@@ -26,7 +26,7 @@ const changeDataReducer = (state = initialState, action) => {
           status: 400,
           statusReason: 'fail'
         }
-      }  
+      }
     default:
       return state
   }

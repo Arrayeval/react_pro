@@ -12,11 +12,11 @@ export const addBook = createAction(actionTypes.ADDBOOK, () => {
 })
 */
 export const {deleteBook, addBook} = createActions(
-    {
-        [actionTypes.DELETEBOOK]: createAction(actionTypes.DELETEBOOK),
-        [actionTypes.ADDBOOK]: createAction(actionTypes.ADDBOOK, () => {
-            //   return {name: '白百合与羽凡', author: '石墨烯'}
-            // 这个回掉函数可选，在里面可以做些公共的配置
-        })
-    }
+  {
+    [actionTypes.DELETEBOOK]: createAction(actionTypes.DELETEBOOK),
+    [actionTypes.ADDBOOK]: createAction(actionTypes.ADDBOOK, () => {
+      //   return {name: '白百合与羽凡', author: '石墨烯'}
+      // 这个回掉函数可选，在里面可以做些公共的配置
+    })
+  }
 )

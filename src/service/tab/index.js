@@ -6,7 +6,7 @@ const tabs = {}
 // 添加tabs
 tabs.addTabs = (obj) => {
   let url = webApi.urlList.tabs.addTabs
-  console.log("qs.stringify",qs.stringify(obj))
+  // console.log("qs.stringify",qs.stringify(obj))
   return axios.post(url,obj,
     //qs.stringify(obj),
     {

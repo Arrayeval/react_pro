@@ -15,6 +15,7 @@ import ShowJueJin from './components/pc/showJueJin'
 import UserLogin from './components/pc/login'
 import ReduxUse from './base/reduxUse'
 import ReduxUse2 from './base/reduxUse2'
+// import ReduxSaga from './base/redux.saga.use'
 
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
@@ -67,6 +68,7 @@ class App extends Component {
                 {/*redux的使用*/}
                 <Route path="/ReduxUse" component={ReduxUse}></Route>
                 <Route path="/ReduxUse2" component={ReduxUse2}></Route>
+                {/* <Route path="/ReduxSaga" component={ReduxSaga}></Route> */}
                 {/*用户登陆*/}
                 <Route exact path="/" component={UserLogin}></Route>
               </Switch >

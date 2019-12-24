@@ -27,11 +27,10 @@ class RedexUse2 extends Component {
     })
   }
   render() {
-    const { onDecrement2, addBook, deleteBook } = this.props;
+    const { onDecrement2, addBook, deleteBook, getArticleList } = this.props;
     // store.subscribe(() => {
     //   console.log("reduxUse2中subscribe 检测到数据变化了", store.getState())
     // })
-    console.log("this.props.productList", this.props.productList)
     return (
       <div className="know-wrapper">
         <Link to='/reduxUse' className="link-to-page">点击一下 go ToReduxUse 》》》</Link>
@@ -60,6 +59,12 @@ class RedexUse2 extends Component {
               <li  className="redux-li-item"> 
                 <button className="btn btn-redux" onClick={deleteBook}>测试下reduxAction是不是正确的[删除一本书]</button>
               </li>
+              <li  className="redux-li-item"> 
+                <button className="btn btn-redux" onClick={getArticleList}>测试下redux-saga</button>
+                <p>
+                  {JSON.stringify(this.props.errorInfo)}
+                </p>
+              </li>
             </ul>
           </div>
           <ul className="study-link">
@@ -83,7 +88,8 @@ class RedexUse2 extends Component {
 const mapStateToProps = function(store) {
   return {
     productList: store.changeDataReducer,
-    bookList: store.BookReducer
+    bookList: store.BookReducer,
+    errorInfo: store.fetchInfoReducer
   };
 };
 
@@ -98,6 +104,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     deleteBook: () => {
       dispatch({...CreateAct.deleteBook(),  payload: {type: 'math', id:2}})
+    },
+    getArticleList: () => {
+      dispatch({type: 'getArticleList', preload: {type: '', pageStart: 0}})
     }
   }
 };
