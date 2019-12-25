@@ -93,7 +93,7 @@ const mapStateToProps = function(store) {
   };
 };
 
-// // 通过mapDispatchProps
+// 通过mapDispatchProps
 const mapDispatchToProps = (dispatch) => {
   return {
     onDecrement2: () => {

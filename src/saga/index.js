@@ -41,8 +41,6 @@ function* showPostsAsync () {
     console.log(action);
   }
 } */
-
-
  // wacther saga
 function* watchGetPosts() {
   yield takeLatest(BEGIN_GET_POSTS, showPostsAsync);
